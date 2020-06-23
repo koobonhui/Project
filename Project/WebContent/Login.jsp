@@ -32,7 +32,7 @@
         <div>
             <h3 class = "join_title"><label for = "pswd1">비밀번호</label></h3>
             <span class = "box int_pass">
-                <input type = "text" id = "pswd1" class = "int" maxlength = "20">
+                <input type = "password" id = "pswd1" class = "int" maxlength = "20">
                 <span id = "alertTxt">사용불가</span>
 <!--                 <img src = "m_icon_pass.png" id = "pswd1_img1" class = "pswdImg"> -->
             </span>

@@ -98,7 +98,6 @@ input {
 }
 
 /* 에러메세지 */
-
 .error_next_box {
     margin-top: 9px;
     font-size: 12px;
@@ -116,7 +115,6 @@ input {
 }
 
 /* 버튼 */
-
 .btn_area {
 	position: relative;
     margin: 30px 0 40px;
