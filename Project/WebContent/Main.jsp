@@ -48,7 +48,7 @@
 		<div class="slide">
 			<div class = "box_cir">
 				<div class = "circle1"></div>
-				<div class = "box_text">소녀의행성</div>
+				<div class = "box_text">소녀의 행성</div>
 				<a href = "https://www.youtube.com/channel/UC-IYpdOqjkER7B6cnChwlhA"><img src = "video/youtubeicon.png"></a>
 			</div>
 		</div>
