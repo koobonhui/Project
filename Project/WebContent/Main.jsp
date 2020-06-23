@@ -77,7 +77,7 @@
 			<span>Copyright ⓒCome See Me All rights reserved.</span>
 		</div>
 		
-		<a id = "git" href = "-"><img src = "video/GitHub.png"  alt = "깃허브"/></a>
+		<a id = "git" href = "https://github.com/koobonhui/Project"><img src = "video/GitHub.png"  alt = "깃허브"/></a>
 		
 	</div>
 </div>
