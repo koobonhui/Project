@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context>
+	<Resource name = "jdbc/project" auth = "Container" type ="javax.sql.DataSource"
+	username = "root" password="yt1234" driverClassName = "com.mysql.cj.jdbc.Driver"
+	factory = "org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+	url = "jdbc:mysql://localhost:3306/project?useUnicode=true&amp;serverTimezone=Asia/Seoul"
+	maxActive = "500" maxIdle = "100" />
+	
+<!-- 	디비를 추가할 때 마다 리소스 추가해야함 -->	
+<!-- 	오라클 버전 -->
+<!-- 	<Resource name = "jdbc/dog" auth = "Container" type ="javax.sql.DataSource" -->
+<!-- 	username = "sys as sysdba" password="yt1234" driverClassName = "oracle.jdbc.driver.OracleDriver" -->
+<!-- 	factory = "org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory" -->
+<!-- 	url = "jdbc:oracle:thin:@127.0.0.1:1521:orcl" -->
+<!-- 	maxActive = "500" maxIdle = "100" /> -->
+</context>

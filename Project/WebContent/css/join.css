@@ -139,12 +139,11 @@ select {
 }
 
 /* 에러메세지 */
-
 .error_next_box {
     margin-top: 9px;
     font-size: 12px;
-    color: red;    
-    display: none;
+    color: red;
+    display: none;    
 }
 
 #alertTxt {
@@ -157,7 +156,6 @@ select {
 }
 
 /* 버튼 */
-
 .btn_area {
     margin: 30px 0 91px;
 }

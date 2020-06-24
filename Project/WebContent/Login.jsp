@@ -10,11 +10,12 @@
 <body>
 <!-- header -->
 <div id="header">
-    <a href="Main.jsp" title="보러올래 회원가입 페이지 보기"><img src="video/Sublogo.png" id="logo"></a>
+    <a href="memberMain.do" title="보러올래 회원가입 페이지 보기"><img src="video/Sublogo.png" id="logo"></a>
 </div>
 
 <!-- wrapper -->
 <div id = "wrapper">
+<form action="memberLoginAction.do" method="post">
     <!-- content-->
     <div id = "content">
         <!-- ID -->
@@ -23,7 +24,7 @@
                 <label for = "id">아이디</label>
             </h3>
             <span class = "box int_id">
-                <input type = "text" id = "id" class = "int" maxlength = "20">
+                <input type = "text" id = "id" class = "int" maxlength = "20" name = "member_id">
                 <span class = "step_url">@dog.com</span>
             </span>
             <span class = "error_next_box"></span>
@@ -32,7 +33,7 @@
         <div>
             <h3 class = "join_title"><label for = "pswd1">비밀번호</label></h3>
             <span class = "box int_pass">
-                <input type = "password" id = "pswd1" class = "int" maxlength = "20">
+                <input type = "password" id = "pswd1" class = "int" maxlength = "20" name = "member_pw">
                 <span id = "alertTxt">사용불가</span>
 <!--                 <img src = "m_icon_pass.png" id = "pswd1_img1" class = "pswdImg"> -->
             </span>
@@ -40,7 +41,7 @@
         </div>
         <!-- Login BTN-->
         <div class = "btn_area">
-            <button type = "button" id="btnJoin">
+            <button type = "submit" id="btnJoin">
                 <span>로그인</span>
             </button>            
         </div>
@@ -48,9 +49,10 @@
         <hr>
         
         <div class = "join_area">
-        	<span><a href = "Join.jsp">회원가입</a></span>
+        	<span><a href = "memberJoin.do">회원가입</a></span>
         </div>
     </div> 
+</form>
     <!-- content-->
 </div> 
 </body>

@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	
+	String userId = "";
+	if(session.getAttribute("id") != null) {
+		userId = (String)session.getAttribute("id");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +26,15 @@
 	<nav class="navbar">
 	  	<ul>
 		    <li><a href="#">홈</a></li>
-		    <li><a href="#">1번 메뉴</a></li>
-		    <li><a href="#">게시판<a></li>
+		    <li><a href="#">소개</a></li>
+		    <li><a href="#">게시판</a></li>
 		    <li><a href="#">갤러리</a></li>
 	  	</ul>
 	</nav>
 	
 	<div class = "login">
-		<button><a href = "Login.jsp">로그인</a></button>
+		<span style = "margin-left: 10px"><%=userId.equals("") ? "" : userId + " 님 반갑습니다."%></span>
+		<%=userId.equals("") ? "<a href = 'memberLogin.do'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
 	</div>
 </header>
 
