@@ -174,13 +174,13 @@ function checkPhoneNum() {
     var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
 
     if(mobile.value === "") {
-        error[7].innerHTML = "필수 정보입니다.";
-        error[7].style.display = "block";
+        error[6].innerHTML = "필수 정보입니다.";
+        error[6].style.display = "block";
     } else if(!isPhoneNum.test(mobile.value)) {
-        error[7].innerHTML = "형식에 맞지 않는 번호입니다.";
-        error[7].style.display = "block";
+        error[6].innerHTML = "형식에 맞지 않는 번호입니다.";
+        error[6].style.display = "block";
     } else {
-        error[7].style.display = "none";
+        error[6].style.display = "none";
     }  
 }
 
