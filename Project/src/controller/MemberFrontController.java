@@ -37,7 +37,7 @@ public class MemberFrontController extends HttpServlet {
 		String command = RequestURI.substring(contextPath.length());
 		ActionForward forward = null;
 		Action action = null;
-		
+
 		if(command.equals("/memberMain.do")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
@@ -48,6 +48,9 @@ public class MemberFrontController extends HttpServlet {
 		} else if(command.equals("/memberJoin.do")) {
 			forward = new ActionForward();
 			forward.setPath("/Join.jsp");
+		} else if(command.equals("/gallery.do")) {
+			forward = new ActionForward();
+			forward.setPath("/Gallery.jsp");
 		} else if(command.equals("/memberLoginAction.do")) {
 			action = new MemberLoginAction();
 			try {

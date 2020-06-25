@@ -25,10 +25,10 @@
 	
 	<nav class="navbar">
 	  	<ul>
-		    <li><a href="#">홈</a></li>
+		    <li><a href="memberMain.do">홈</a></li>
 		    <li><a href="#">소개</a></li>
 		    <li><a href="#">게시판</a></li>
-		    <li><a href="#">갤러리</a></li>
+		    <li><a href="gallery.do">갤러리</a></li>
 	  	</ul>
 	</nav>
 	
@@ -78,7 +78,13 @@
 	</div>
 	
 	<div class = "section">
-		<h2>이건 모르겠다</h2>
+		<div id = "map_introduce">
+			<h2>찾아 오시는 길</h2>
+		</div>
+		
+		<div id = "map">
+			<div id="daumRoughmapContainer1593044858680" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+		</div>
 	</div>
 	
 	<div class = "section fp-auto-height">
@@ -96,6 +102,16 @@
 new fullpage('#full-page', { 
 	sectionsColor: ['', 'rgba(153, 153, 255, 0.7)', 'rgba(153, 153, 255, 0.7)', '#333']
 });
+</script>
+<!-- 카카오 맵 -->
+<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+<script charset="UTF-8">
+	new daum.roughmap.Lander({
+		"timestamp" : "1593044858680",
+		"key" : "yx5z",
+		"mapWidth" : "600",
+		"mapHeight" : "400"
+	}).render();
 </script>
 </body>
 </html>

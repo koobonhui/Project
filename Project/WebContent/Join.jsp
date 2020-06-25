@@ -98,10 +98,10 @@
                 <div id="bir_dd">
                     <span class="box">
                         <input type="text" id="dd" class="int" maxlength="2" placeholder="일" name = "dd">
-                    </span>
-                    <span class="error_next_box"></span>    
+                    </span>     
                 </div>
             </div>
+            <span class="error_next_box"></span>
         </div>
 
         <!-- GENDER -->
@@ -128,7 +128,7 @@
 
         <!-- JOIN BTN-->
         <div class="btn_area">
-            <button type = "submit" id = "btnJoin">
+            <button type = "submit" id = "btnJoin" onclick="return check_join();">
                 <span>가입하기</span>
             </button>
         </div>
