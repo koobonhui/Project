@@ -27,6 +27,9 @@ header {
 	color: white;
 }
 
+header > div a {
+	color: white;
+}
 #logo {
 	float: left;
 	margin-left: 30px;

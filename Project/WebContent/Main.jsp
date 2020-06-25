@@ -58,21 +58,21 @@
 			<div class = "box_cir">
 				<div class = "circle1"></div>
 				<div class = "box_text">소녀의 행성</div>
-				<a href = "https://www.youtube.com/channel/UC-IYpdOqjkER7B6cnChwlhA"><img src = "video/youtubeicon.png"></a>
+				<a href = "https://www.youtube.com/channel/UC-IYpdOqjkER7B6cnChwlhA" target="_blank"><img src = "video/youtubeicon.png"></a>
 			</div>
 		</div>
 		<div class="slide">
 			<div class = "box_cir">
 				<div class = "circle2"></div>
 				<div class = "box_text">아리둥절 Ari the Corgi</div>
-				<a href = "https://www.youtube.com/channel/UCeXxAet11DPbC8pG-lBOUTQ"><img src = "video/youtubeicon.png"></a>
+				<a href = "https://www.youtube.com/channel/UCeXxAet11DPbC8pG-lBOUTQ" target="_blank"><img src = "video/youtubeicon.png"></a>
 			</div>
 		</div>
 		<div class="slide">
 			<div class = "box_cir">
 				<div class = "circle3"></div>
 				<div class = "box_text">속삭이는 몽자</div>
-				<a href = "https://www.youtube.com/user/CHUCHU7325"><img src = "video/youtubeicon.png"></a>
+				<a href = "https://www.youtube.com/user/CHUCHU7325" target="_blank"><img src = "video/youtubeicon.png"></a>
 			</div>
 		</div>
 	</div>
