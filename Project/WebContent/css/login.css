@@ -136,6 +136,10 @@ input {
 	text-align: center;
 }
 
-.join_area > a {
-	text-decoration: none;
+.join_area > span > a {
+	text-decoration: none; 
+}
+
+.join_area > span > a:visited {
+	color: #666; 
 }

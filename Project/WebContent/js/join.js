@@ -22,46 +22,65 @@ var mobile = document.querySelector('#mobile');
 
 var error = document.querySelectorAll('.error_next_box');
 
-var check = false;
+var check_id = true;
+var check_pw = true;
+var check_pw2 = true;
+var check_name = true;
+var chaek_birth = true;
+var check_gender = true;
+var check_phone = true;
 
 /*이벤트 핸들러 연결*/
 id.addEventListener("keyup", checkId);
 id.addEventListener("mouseup", checkId);
+id.addEventListener("change", checkId);
 pw1.addEventListener("keyup", checkPw);
+pw1.addEventListener("change", checkPw);
 pw2.addEventListener("keyup", comparePw);
+pw2.addEventListener("change", comparePw);
 userName.addEventListener("keyup", checkName);
+userName.addEventListener("change", checkName);
 yy.addEventListener("keydown", isBirthCompleted);
+yy.addEventListener("change", isBirthCompleted);
 mm.addEventListener("keyup", isBirthCompleted);
 mm.addEventListener("click", isBirthCompleted);
+mm.addEventListener("change", isBirthCompleted);
 dd.addEventListener("change", isBirthCompleted);
-gender.addEventListener("click", function() {
-    if(gender.value === "성별") {
-        error[5].style.display = "block";
-        check = false;
-    } else {
-        error[5].style.display = "none";
-        check = true;
-    }
-})
+dd.addEventListener("keyup", isBirthCompleted);
+gender.addEventListener("click",checkgender);
+gender.addEventListener("change",checkgender);
 mobile.addEventListener("keyup", checkPhoneNum);
+mobile.addEventListener("change", checkPhoneNum);
 
 /*콜백 함수*/
+function checkgender() {
+	 if(gender.value === "성별") {
+	        error[5].style.display = "block";
+	        check_gender = false;
+	    } else {
+	        error[5].style.display = "none";
+	        check_gender = true;
+	    }
+	    console.log("성별 : ", check_gender);
+}
+
 function checkId() {
     var idPattern = /[a-zA-Z0-9_-]{5,20}/;
     if(id.value === "") {
         error[0].innerHTML = "필수 정보입니다.";
         error[0].style.display = "block";
-        check = false;
+        check_id = false;
     } else if(!idPattern.test(id.value)) {
         error[0].innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
         error[0].style.display = "block";
-        check = false;
+        check_id = false;
     } else {
         error[0].innerHTML = "멋진 아이디네요!";
         error[0].style.color = "#08A600";
         error[0].style.display = "block";
-        check = true;
+        check_id = true;
     }
+    console.log("아이디 : ", check_id);
 }
 
 function checkPw() {
@@ -71,7 +90,7 @@ function checkPw() {
         pwMsg.style.display = "block";
         pwImg1.src = "video/m_icon_pass.png";
         error[1].style.display = "block";
-        check = false;
+        check_pw = false;
     } else if(!pwPattern.test(pw1.value)) {
         error[1].innerHTML = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
         pwMsg.innerHTML = "사용불가";
@@ -80,34 +99,36 @@ function checkPw() {
         
         pwMsg.style.display = "block";
         pwImg1.src = "video/m_icon_not_use.png";
-        check = false;
+        check_pw = false;
     } else {
         error[1].style.display = "none";
         pwMsg.innerHTML = "안전";
         pwMsg.style.display = "block";
         pwMsg.style.color = "#03c75a";
         pwImg1.src = "video/m_icon_safe.png";
-        check = true;
+        check_pw = true;
     }
+    console.log("비밀번호 : ", check_pw);
 }
 
 function comparePw() {
     if(pw2.value === pw1.value) {
         pwImg2.src = "video/m_icon_check_enable.png";
         error[2].style.display = "none";
-        check = true;
+        check_pw2 = true;
     } else if(pw2.value !== pw1.value) {
         pwImg2.src = "video/m_icon_check_disable.png";
         error[2].innerHTML = "비밀번호가 일치하지 않습니다.";
         error[2].style.display = "block";
-        check = false;
+        check_pw2 = false;
     } 
 
     if(pw2.value === "") {
         error[2].innerHTML = "필수 정보입니다.";
         error[2].style.display = "block";
-        check = false;
+        check_pw2 = false;
     }
+    console.log("비밀번호 확인 : ", check_pw2);
 }
 
 function checkName() {
@@ -115,15 +136,16 @@ function checkName() {
     if(userName.value === "") {
         error[3].innerHTML = "필수 정보입니다.";
         error[3].style.display = "block";
-        check = false;
+        check_name = false;
     } else if(!namePattern.test(userName.value) || userName.value.indexOf(" ") > -1) {
         error[3].innerHTML = "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)";
         error[3].style.display = "block";
-        check = false;
+        check_name = false;
     } else {
         error[3].style.display = "none";
-        check = true;
+        check_name = true;
     }
+    console.log("이름 : ", check_name);
 }
 
 
@@ -133,7 +155,9 @@ function isBirthCompleted() {
     if(!yearPattern.test(yy.value)) {
         error[4].innerHTML = "태어난 년도 4자리를 정확하게 입력하세요.";
         error[4].style.display = "block";
+        check_birth = false;
     } else {
+    	check_birth = true;
         isMonthSelected();
     }
 
@@ -141,7 +165,9 @@ function isBirthCompleted() {
     function isMonthSelected() {
         if(mm.value === "월") {
             error[4].innerHTML = "태어난 월을 선택하세요.";
+        	check_birth = false;
         } else {
+        	check_birth = true;
             isDateCompleted();
         }
     }
@@ -149,7 +175,9 @@ function isBirthCompleted() {
     function isDateCompleted() {
         if(dd.value === "") {
             error[4].innerHTML = "태어난 일(날짜) 2자리를 정확하게 입력하세요.";
+        	check_birth = false;
         } else {
+        	check_birth = true;
             isBirthRight();
         }
     }
@@ -159,15 +187,17 @@ function isBirthRight() {
     var datePattern = /\d{1,2}/;
     if(!datePattern.test(dd.value) || Number(dd.value)<1 || Number(dd.value)>31) {
         error[4].innerHTML = "생년월일을 다시 확인해주세요.";
-        check = false;
+    	check_birth = false;
     } else {
+    	check_birth = true;
         checkAge();
     }
 }
 
 function checkAge() {
 	error[4].style.display = "none";
-	check = true;
+	check_birth = true;
+	console.log("생년월일 : ", check_birth);
 }
 
 function checkPhoneNum() {
@@ -176,19 +206,26 @@ function checkPhoneNum() {
     if(mobile.value === "") {
         error[6].innerHTML = "필수 정보입니다.";
         error[6].style.display = "block";
+        check_phone = false;
     } else if(!isPhoneNum.test(mobile.value)) {
         error[6].innerHTML = "형식에 맞지 않는 번호입니다.";
         error[6].style.display = "block";
+        check_phone = false;
     } else {
         error[6].style.display = "none";
-    }  
+        check_phone = true;
+    }
+    console.log("휴대폰 : ", check_phone);
 }
 
 function check_join() {
-	if(check === false) {
-		alert("못낸다 새끼야");
+	var check_all = check_id && check_pw && check_pw2 && check_name && check_birth && check_gender && check_phone;
+	console.log("체크 : ", check_all);
+	if(check_all === false) {
+		alert("못낸다");
+		return false;
 	} else {
 		alert("환영한다");
+		return true;
 	}
-	return check;
 }
