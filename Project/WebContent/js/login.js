@@ -3,6 +3,7 @@ var pw1 = document.querySelector('#pswd1');
 
 var check_id = true;
 var check_pw = true;
+var check_caps = true;
 
 id.addEventListener("keyup", checkId);
 pw1.addEventListener("keyup", checkPw);
@@ -14,9 +15,12 @@ function caps_lock(e) {
 	shiftKey = e.shiftKey;
 	if (((keyCode >= 65 && keyCode <= 90) && !shiftKey) || ((keyCode >= 97 && keyCode <= 122) && shiftKey)) {
 		$(".error_next_box").show();
+		var check_caps = false;
 	} else {
 		$(".error_next_box").hide();
+		var check_caps = true;
 	}
+	console.log("캡스락 : ", check_caps);
 }
 
 function checkId() {
@@ -35,6 +39,7 @@ function checkPw() {
         check_pw = true;
     }
     console.log("비밀번호 : ", check_pw);
+    console.log("비번 캡스락 : ", check_caps);
 }
 
 function check_login() {
@@ -42,6 +47,9 @@ function check_login() {
 	console.log("체크 : ", check_all);
 	if(check_all === false) {
 		alert("아이디와 비밀번호를 입력해주세요.");
+		return false;
+	} else if(check_caps === false) {
+		alert('캡스락을 꺼주세요.')
 		return false;
 	} else {
 		return true;
