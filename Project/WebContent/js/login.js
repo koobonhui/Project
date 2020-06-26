@@ -1,11 +1,13 @@
 var id = document.querySelector('#id');
 var pw1 = document.querySelector('#pswd1');
+var error = document.querySelectorAll('.error_next_box');
 
 var check_id = true;
 var check_pw = true;
 var check_caps = true;
 
 id.addEventListener("keyup", checkId);
+id.addEventListener("change", checkId);
 pw1.addEventListener("keyup", checkPw);
 
 function caps_lock(e) {
@@ -24,7 +26,12 @@ function caps_lock(e) {
 }
 
 function checkId() {
+	var idPattern = /[a-zA-Z0-9_-]{5,20}/;
     if(id.value === "") {
+        check_id = false;
+    } else if(!idPattern.test(id.value)) {
+        error[0].innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+        error[0].style.display = "block";
         check_id = false;
     } else {
         check_id = true;
@@ -46,7 +53,7 @@ function check_login() {
 	var check_all = check_id && check_pw;
 	console.log("체크 : ", check_all);
 	if(check_all === false) {
-		alert("아이디와 비밀번호를 입력해주세요.");
+		alert("아이디와 비밀번호를 확인해주세요.");
 		return false;
 	} else if(check_caps === false) {
 		alert('캡스락을 꺼주세요.')
