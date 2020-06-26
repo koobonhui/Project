@@ -6,8 +6,6 @@
 <meta charset="UTF-8">
 <title>강아지 보러올래? : 로그인</title>
 <link rel = "stylesheet" href = "css/login.css">
-<script src = "js/jquery-3.5.1.min.js"></script>
-<script src = "js/login.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -41,7 +39,7 @@
         
         <!-- Login BTN-->
         <div class = "btn_area">
-            <button type = "submit" id="btnJoin">
+            <button type = "submit" id="btnJoin" onclick="return check_login();">
                 <span>로그인</span>
             </button>            
         </div>
@@ -56,4 +54,6 @@
     <!-- content-->
 </div> 
 </body>
+<script src = "js/jquery-3.5.1.min.js"></script>
+<script src = "js/login.js"></script>
 </html>
