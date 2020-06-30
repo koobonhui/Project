@@ -29,10 +29,6 @@ function checkId() {
 	var idPattern = /[a-zA-Z0-9_-]{5,20}/;
     if(id.value === "") {
         check_id = false;
-    } else if(!idPattern.test(id.value)) {
-        error[0].innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
-        error[0].style.display = "block";
-        check_id = false;
     } else {
         check_id = true;
     }
@@ -46,17 +42,13 @@ function checkPw() {
         check_pw = true;
     }
     console.log("비밀번호 : ", check_pw);
-    console.log("비번 캡스락 : ", check_caps);
 }
 
 function check_login() {
 	var check_all = check_id && check_pw;
 	console.log("체크 : ", check_all);
 	if(check_all === false) {
-		alert("아이디와 비밀번호를 확인해주세요.");
-		return false;
-	} else if(check_caps === false) {
-		alert('캡스락을 꺼주세요.')
+		alert("아이디와 비밀번호를 확인(입력)해주세요.");
 		return false;
 	} else {
 		return true;

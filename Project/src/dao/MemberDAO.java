@@ -14,7 +14,7 @@ public class MemberDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	private MemberDAO() {
+	public MemberDAO() {
 		
 	}
 	
@@ -72,6 +72,29 @@ public class MemberDAO {
 		}
 		
 		return insertCount;
+	}
+	
+	public int OverLapId(MemberBean member) {
+		String sql = "SELECT member_id FROM members WHERE member_id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getMember_id());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return 0;		// 아이디 있음
+			} else {
+				return 1;		// 가입 가능
+			}
+		} catch (Exception ex) {
+			System.out.println(" 에러: " + ex);			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return -1;
 	}
 	
 //	public ArrayList<MemberBean> selectMemberList() {

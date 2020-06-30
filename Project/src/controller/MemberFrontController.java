@@ -15,6 +15,7 @@ import action.MemberJoinAction;
 //import action772.MemberListAction;
 import action.MemberLoginAction;
 import action.MemberLogoutAction;
+import action.MemberOverLapAction;
 //import action772.MemberViewAction;
 import vo.ActionForward;
 
@@ -67,6 +68,13 @@ public class MemberFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/memberJoinAction.do")) {
 			action = new MemberJoinAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/memberoverlapaction.do")) {
+			action = new MemberOverLapAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

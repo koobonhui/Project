@@ -36,6 +36,7 @@ id.addEventListener("mouseup", checkId);
 id.addEventListener("change", checkId);
 pw1.addEventListener("keyup", checkPw);
 pw1.addEventListener("change", checkPw);
+pw1.addEventListener("keydown", checkPw);
 pw2.addEventListener("keyup", comparePw);
 pw2.addEventListener("change", comparePw);
 userName.addEventListener("keyup", checkName);
@@ -68,17 +69,38 @@ function checkId() {
     var idPattern = /[a-zA-Z0-9_-]{5,20}/;
     if(id.value === "") {
         error[0].innerHTML = "필수 정보입니다.";
+        error[0].style.color = "red";
         error[0].style.display = "block";
         check_id = false;
     } else if(!idPattern.test(id.value)) {
         error[0].innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+        error[0].style.color = "red";
         error[0].style.display = "block";
         check_id = false;
     } else {
-        error[0].innerHTML = "멋진 아이디네요!";
-        error[0].style.color = "#08A600";
-        error[0].style.display = "block";
-        check_id = true;
+    	var member_id = id.value;
+        $.ajax({
+        	type : "POST",
+            url : "memberoverlapaction.do",
+            data : {member_id : member_id},
+            success : function(result) {
+            	if(result == true) {
+            		error[0].innerHTML = "있음";
+                    error[0].style.color = "red";
+                    error[0].style.display = "block";
+                    check_id = false;
+            	} else {
+            		error[0].innerHTML = "멋진 아이디네요!";
+                    error[0].style.color = "#08A600";
+                    error[0].style.display = "block";
+                    check_id = true;
+            	}
+            }
+        })
+//        error[0].innerHTML = "멋진 아이디네요!";
+//        error[0].style.color = "#08A600";
+//        error[0].style.display = "block";
+//        check_id = true;
     }
     console.log("아이디 : ", check_id);
 }
@@ -93,6 +115,7 @@ function checkPw() {
         check_pw = false;
     } else if(!pwPattern.test(pw1.value)) {
         error[1].innerHTML = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
+        pwMsg.style.color = "red";
         pwMsg.innerHTML = "사용불가";
         pwMsgArea.style.paddingRight = "93px";
         error[1].style.display = "block";
