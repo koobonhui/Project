@@ -14,7 +14,7 @@ public class MemberOverLapService {
 		boolean OverlapResult = false;
 		int OverlapId = memberDAO.OverLapId(member);
 		if(OverlapId == 0){
-			OverlapResult = true;
+			OverlapResult = true;	// 아이디 있음
 		}
 		close(conn);
 		return OverlapResult;

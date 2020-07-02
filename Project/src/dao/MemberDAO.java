@@ -94,7 +94,7 @@ public class MemberDAO {
 			close(pstmt);
 		}
 		
-		return -1;
+		return -1;	// 디비 에러
 	}
 	
 //	public ArrayList<MemberBean> selectMemberList() {

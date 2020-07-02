@@ -34,6 +34,7 @@ var check_phone = true;
 id.addEventListener("keyup", checkId);
 id.addEventListener("mouseup", checkId);
 id.addEventListener("change", checkId);
+id.addEventListener("blur", checkId);
 pw1.addEventListener("keyup", checkPw);
 pw1.addEventListener("change", checkPw);
 pw1.addEventListener("keydown", checkPw);
@@ -79,12 +80,13 @@ function checkId() {
         check_id = false;
     } else {
     	var member_id = id.value;
+    	
         $.ajax({
         	type : "POST",
-            url : "memberoverlapaction.do",
-            data : {member_id : member_id},
+            url : "memberoverlap.do",
+            data : {"member_id" : member_id},
             success : function(result) {
-            	if(result == true) {
+            	if(result.trim() == member_id) {
             		error[0].innerHTML = "있음";
                     error[0].style.color = "red";
                     error[0].style.display = "block";
