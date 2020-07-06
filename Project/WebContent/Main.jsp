@@ -34,7 +34,7 @@
 	
 	<div class = "login">
 		<span style = "margin-left: 10px"><%=userId.equals("") ? "" : userId + " 님 반갑습니다."%></span>
-		<%=userId.equals("") ? "<a href = 'memberLogin.do'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
+		<%=userId.equals("") ? "<a href = 'memberLogin.do' class = 'button push'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
 	</div>
 </header>
 
@@ -45,7 +45,10 @@
 			<source src="video/MainIntro.webm" type="video/webm">
 		</video>
 		
-		<button type="button" onclick="play_pause()">Play/Pause 나중에 이쁘게 꾸미기</button>
+		<div class="slideThree">  
+      		<input type="checkbox" value="None" id="slideThree" name="check" checked onclick="play_pause()"/>
+      		<label for="slideThree"></label>
+    	</div>
 		
 		<div id = "scroll">
 			<span></span><span></span><span></span>
