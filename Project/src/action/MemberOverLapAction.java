@@ -1,7 +1,6 @@
 package action;
 
 
-import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +17,7 @@ public class MemberOverLapAction implements Action {
 		MemberBean member = new MemberBean();
 		HttpSession session = request.getSession();
    		boolean joinResult = false;
-   		member.setMember_id(request.getParameter("member_id"));
+   		member.setMember_id(request.getParameter("check"));
    		
    		MemberOverLapService memberOverLapService = new MemberOverLapService();
    		joinResult = memberOverLapService.overlap(member);
@@ -30,12 +29,10 @@ public class MemberOverLapAction implements Action {
 	   		forward.setRedirect(true);
 	   		forward.setPath("memberoverlap.do");
    		} else {
-   			response.setContentType("text/html;charset=UTF-8");
-	   		PrintWriter out=response.getWriter();
-	   		out.println("<script>");
-	   		out.println("alert('실패');");
-	   		out.println("location.href='memberJoin.do'");
-	   		out.println("</script>");
+   			session.setAttribute("check", joinResult);
+	   	    forward = new ActionForward();
+	   		forward.setRedirect(true);
+	   		forward.setPath("memberoverlap.do");
    		}
    		return forward;
 	}

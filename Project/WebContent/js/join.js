@@ -31,17 +31,23 @@ var check_gender = true;
 var check_phone = true;
 
 /*이벤트 핸들러 연결*/
+
+// -------- 아이디 양식 확인 -----------
 id.addEventListener("keyup", checkId);
 id.addEventListener("mouseup", checkId);
 id.addEventListener("change", checkId);
-id.addEventListener("blur", checkId);
+// -------- 아이디 중복 확인 -----------
+id.addEventListener("blur", overlap);
+// -------- 비번 양식 확인 -----------
 pw1.addEventListener("keyup", checkPw);
 pw1.addEventListener("change", checkPw);
 pw1.addEventListener("keydown", checkPw);
 pw2.addEventListener("keyup", comparePw);
 pw2.addEventListener("change", comparePw);
+// -------- 이름 양식 확인 -----------
 userName.addEventListener("keyup", checkName);
 userName.addEventListener("change", checkName);
+// -------- 생년월일 양식 확인 -----------
 yy.addEventListener("keydown", isBirthCompleted);
 yy.addEventListener("change", isBirthCompleted);
 mm.addEventListener("keyup", isBirthCompleted);
@@ -49,8 +55,10 @@ mm.addEventListener("click", isBirthCompleted);
 mm.addEventListener("change", isBirthCompleted);
 dd.addEventListener("change", isBirthCompleted);
 dd.addEventListener("keyup", isBirthCompleted);
+// -------- 성별 양식 확인 -----------
 gender.addEventListener("click",checkgender);
 gender.addEventListener("change",checkgender);
+// -------- 휴대폰 양식 확인 -----------
 mobile.addEventListener("keyup", checkPhoneNum);
 mobile.addEventListener("change", checkPhoneNum);
 
@@ -78,33 +86,39 @@ function checkId() {
         error[0].style.color = "red";
         error[0].style.display = "block";
         check_id = false;
-    } else {
-    	var member_id = id.value;
-    	
-        $.ajax({
-        	type : "POST",
-            url : "memberoverlap.do",
-            data : {"member_id" : member_id},
-            success : function(result) {
-            	if(result.trim() == member_id) {
-            		error[0].innerHTML = "있음";
-                    error[0].style.color = "red";
-                    error[0].style.display = "block";
-                    check_id = false;
-            	} else {
-            		error[0].innerHTML = "멋진 아이디네요!";
-                    error[0].style.color = "#08A600";
-                    error[0].style.display = "block";
-                    check_id = true;
-            	}
-            }
-        })
-//        error[0].innerHTML = "멋진 아이디네요!";
-//        error[0].style.color = "#08A600";
-//        error[0].style.display = "block";
-//        check_id = true;
-    }
+    } 
+    
     console.log("아이디 : ", check_id);
+}
+
+function overlap() {		// 아이디 중복 확인
+	var check = id.value;
+	if(id.value === "") {
+        error[0].innerHTML = "필수 정보입니다.";
+        error[0].style.color = "red";
+        error[0].style.display = "block";
+        check_id = false;
+	} else {
+		$.ajax({
+			type : "POST",
+		    url : "memberoverlapaction.do",
+		    data : {"check" : check},
+		    success : function(result) {
+		    	if(result.trim() == "true") {
+		    		error[0].innerHTML = "이미 사용중이거나 탈퇴한 아이디입니다.";
+		            error[0].style.color = "red";
+		            error[0].style.display = "block";
+		            check_id = false;
+		    	} else {
+		    		error[0].innerHTML = "멋진 아이디네요!";
+		            error[0].style.color = "#08A600";
+		            error[0].style.display = "block";
+		            check_id = true;
+		    	}
+		    }
+		})
+	}
+	console.log("아이디중복 : ", check_id);
 }
 
 function checkPw() {
@@ -172,7 +186,6 @@ function checkName() {
     }
     console.log("이름 : ", check_name);
 }
-
 
 function isBirthCompleted() {
     var yearPattern = /[0-9]{4}/;
@@ -247,10 +260,10 @@ function check_join() {
 	var check_all = check_id && check_pw && check_pw2 && check_name && check_birth && check_gender && check_phone;
 	console.log("체크 : ", check_all);
 	if(check_all === false) {
-		alert("못낸다");
+		alert("회원가입 양식을 확인해주세요.");
 		return false;
 	} else {
-		alert("환영한다");
+		alert("회원가입에 성공했습니다, 환영합니다.");
 		return true;
 	}
 }
