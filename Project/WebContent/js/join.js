@@ -86,7 +86,9 @@ function checkId() {
         error[0].style.color = "red";
         error[0].style.display = "block";
         check_id = false;
-    } 
+    } else {
+    	error[0].innerHTML = "";
+    }
     
     console.log("아이디 : ", check_id);
 }
