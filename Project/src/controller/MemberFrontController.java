@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import action.Action;
+import action.BoardListAction;
+import action.BoardWriteAction;
 //import action772.MemberDeleteAction;
 import action.MemberJoinAction;
 //import action772.MemberListAction;
@@ -38,45 +40,65 @@ public class MemberFrontController extends HttpServlet {
 		String command = RequestURI.substring(contextPath.length());
 		ActionForward forward = null;
 		Action action = null;
-
-		if(command.equals("/memberMain.do")) {
+		
+		if(command.equals("/memberMain.do")) {		// 메인 jsp
 			forward = new ActionForward();
 			forward.setPath("/Main.jsp");
-		} else if(command.equals("/memberLogin.do")) {
+		} else if(command.equals("/memberLogin.do")) {	// 로그인 jsp
 			forward = new ActionForward();
 			forward.setPath("/Login.jsp");
-		} else if(command.equals("/memberJoin.do")) {
+		} else if(command.equals("/memberJoin.do")) {	// 회원가입 jsp
 			forward = new ActionForward();
 			forward.setPath("/Join.jsp");
-		} else if(command.equals("/gallery.do")) {
+		} else if(command.equals("/gallery.do")) {	// 갤러리 jsp
 			forward = new ActionForward();
 			forward.setPath("/Gallery.jsp");
-		} else if(command.equals("/memberoverlap.do")) {
+		} else if(command.equals("/memberoverlap.do")) {	// 실시간 확인 jsp
 			forward = new ActionForward();
 			forward.setPath("/Memberoverlap.jsp");
-		} else if(command.equals("/memberLoginAction.do")) {
+		} else if(command.equals("/boardwrite.do")) {	// 글쓰기 jsp
+			forward = new ActionForward();
+			forward.setPath("/BoardWrite.jsp");
+		} else if(command.equals("/boardlist.do")) {	// 게시판 jsp
+			forward = new ActionForward();
+			forward.setPath("/BoardList.jsp");
+		} else if(command.equals("/memberLoginAction.do")) {	// 로그인 Action
 			action = new MemberLoginAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/memberLogoutAction.do")) {
+		} else if(command.equals("/memberLogoutAction.do")) {	// 로그아웃 Action
 			action = new MemberLogoutAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/memberJoinAction.do")) {
+		} else if(command.equals("/memberJoinAction.do")) {	// 회원가입 Action
 			action = new MemberJoinAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/memberoverlapaction.do")) {
+		} else if(command.equals("/memberoverlapaction.do")) {	// 실시간 아이디 중복 Action
 			action = new MemberOverLapAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardWriteAction.do")) {	// 게시판 글쓰기 Action
+			action = new BoardWriteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardListAction.do")) {	// 게시판 리스트 목록 Action
+			action = new BoardListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

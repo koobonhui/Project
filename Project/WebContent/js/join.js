@@ -22,13 +22,13 @@ var mobile = document.querySelector('#mobile');
 
 var error = document.querySelectorAll('.error_next_box');
 
-var check_id = true;
-var check_pw = true;
-var check_pw2 = true;
-var check_name = true;
-var chaek_birth = true;
-var check_gender = true;
-var check_phone = true;
+var check_id = false;
+var check_pw = false;
+var check_pw2 = false;
+var check_name = false;
+var chaek_birth = false;
+var check_gender = false;
+var check_phone = false;
 
 /*이벤트 핸들러 연결*/
 

@@ -18,6 +18,7 @@
 <script src = "js/jquery-3.5.1.min.js"></script>
 <script src = "js/fullpage.min.js"></script>
 <script src = "js/main.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 </head>
 <body>
 <header>
@@ -27,7 +28,7 @@
 	  	<ul>
 		    <li><a href="memberMain.do">홈</a></li>
 		    <li><a href="#">소개</a></li>
-		    <li><a href="#">게시판</a></li>
+		    <li><a href="boardListAction.do">게시판</a></li>
 		    <li><a href="gallery.do">갤러리</a></li>
 	  	</ul>
 	</nav>
@@ -52,7 +53,7 @@
 		
 		<div id = "scroll">
 			<span></span><span></span><span></span>
-			<small>스크롤을 내려주세요</small>
+			<small class="animated heartBeat delay-2s">스크롤을 내려주세요</small>
 		</div>
 	</div>
 	
@@ -61,21 +62,21 @@
 			<div class = "box_cir">
 				<div class = "circle1"></div>
 				<div class = "box_text">소녀의 행성</div>
-				<a href = "https://www.youtube.com/channel/UC-IYpdOqjkER7B6cnChwlhA" target="_blank"><img src = "video/youtubeicon.png"></a>
+				<a href = "https://www.youtube.com/channel/UC-IYpdOqjkER7B6cnChwlhA" target="_blank"><img class = "animated infinite swing slow" src = "video/youtubeicon.png"></a>
 			</div>
 		</div>
 		<div class="slide">
 			<div class = "box_cir">
 				<div class = "circle2"></div>
 				<div class = "box_text">아리둥절 Ari the Corgi</div>
-				<a href = "https://www.youtube.com/channel/UCeXxAet11DPbC8pG-lBOUTQ" target="_blank"><img src = "video/youtubeicon.png"></a>
+				<a href = "https://www.youtube.com/channel/UCeXxAet11DPbC8pG-lBOUTQ" target="_blank"><img class = "animated infinite swing slow" src = "video/youtubeicon.png"></a>
 			</div>
 		</div>
 		<div class="slide">
 			<div class = "box_cir">
 				<div class = "circle3"></div>
 				<div class = "box_text">속삭이는 몽자</div>
-				<a href = "https://www.youtube.com/user/CHUCHU7325" target="_blank"><img src = "video/youtubeicon.png"></a>
+				<a href = "https://www.youtube.com/user/CHUCHU7325" target="_blank"><img class = "animated infinite swing slow" src = "video/youtubeicon.png"></a>
 			</div>
 		</div>
 	</div>
