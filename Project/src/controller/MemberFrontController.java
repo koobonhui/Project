@@ -59,9 +59,6 @@ public class MemberFrontController extends HttpServlet {
 		} else if(command.equals("/boardwrite.do")) {	// 글쓰기 jsp
 			forward = new ActionForward();
 			forward.setPath("/BoardWrite.jsp");
-		} else if(command.equals("/boardlist.do")) {	// 게시판 jsp
-			forward = new ActionForward();
-			forward.setPath("/BoardList.jsp");
 		} else if(command.equals("/memberLoginAction.do")) {	// 로그인 Action
 			action = new MemberLoginAction();
 			try {
@@ -97,7 +94,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/boardListAction.do")) {	// 게시판 리스트 목록 Action
+		} else if(command.equals("/boardlist.do")) {	// 게시판 리스트 목록 Action
 			action = new BoardListAction();
 			try {
 				forward = action.execute(request, response);

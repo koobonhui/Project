@@ -13,11 +13,13 @@
 	
 	ArrayList<BoardBean> boardList = (ArrayList<BoardBean>)request.getAttribute("articleList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+	System.out.println(pageInfo);
 	int listCount = pageInfo.getListCount();
 	int nowPage = pageInfo.getPage();
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
+	
 %>
 <!DOCTYPE html>
 <html>

@@ -41,7 +41,7 @@ public class BoardListAction implements Action {
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("articleList", boardList);
 		ActionForward forward= new ActionForward();
-   		forward.setPath("boardlist.do");
+   		forward.setPath("BoardList.jsp");
    		return forward;
    		
 	 }

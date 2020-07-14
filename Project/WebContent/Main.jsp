@@ -28,7 +28,7 @@
 	  	<ul>
 		    <li><a href="memberMain.do">홈</a></li>
 		    <li><a href="#">소개</a></li>
-		    <li><a href="boardListAction.do">게시판</a></li>
+		    <li><a href="boardlist.do">게시판</a></li>
 		    <li><a href="gallery.do">갤러리</a></li>
 	  	</ul>
 	</nav>

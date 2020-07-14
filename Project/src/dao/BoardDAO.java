@@ -29,6 +29,7 @@ public class BoardDAO {
 	public void setConnection(Connection conn) {
 		this.conn = conn;
 	}
+	
 	// 글 등록하기.	
 	public int insertWrite(BoardBean write) {
 		String sql = "insert into board(board_title, board_username , board_date, board_readcount, board_content) values(?, ?, now(), ?, ?)";
@@ -92,7 +93,7 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				listCount=rs.getInt(1);
+				listCount = rs.getInt(1);
 			}
 		} catch(Exception ex) {
 			System.out.println("getListCount 에러: " + ex);			
