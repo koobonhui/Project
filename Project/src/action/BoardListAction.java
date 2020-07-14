@@ -39,7 +39,7 @@ public class BoardListAction implements Action {
 		pageInfo.setPage(page);
 		pageInfo.setStartPage(startPage);	
 		request.setAttribute("pageInfo", pageInfo);
-		request.setAttribute("articleList", boardList);
+		request.setAttribute("boardList", boardList);
 		ActionForward forward= new ActionForward();
    		forward.setPath("BoardList.jsp");
    		return forward;

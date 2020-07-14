@@ -11,9 +11,8 @@
 		userId = (String)session.getAttribute("id");
 	}
 	
-	ArrayList<BoardBean> boardList = (ArrayList<BoardBean>)request.getAttribute("articleList");
+	ArrayList<BoardBean> boardList = (ArrayList<BoardBean>)request.getAttribute("boardList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-	System.out.println(pageInfo);
 	int listCount = pageInfo.getListCount();
 	int nowPage = pageInfo.getPage();
 	int maxPage = pageInfo.getMaxPage();
