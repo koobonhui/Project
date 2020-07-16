@@ -34,19 +34,22 @@ var check_phone = false;
 
 // -------- 아이디 양식 확인 -----------
 id.addEventListener("keyup", checkId);
-id.addEventListener("mouseup", checkId);
+id.addEventListener("focus", checkId);
 id.addEventListener("change", checkId);
 // -------- 아이디 중복 확인 -----------
 id.addEventListener("blur", overlap);
 // -------- 비번 양식 확인 -----------
 pw1.addEventListener("keyup", checkPw);
-pw1.addEventListener("change", checkPw);
 pw1.addEventListener("keydown", checkPw);
+pw1.addEventListener("change", checkPw);
+pw1.addEventListener("focus", checkPw);
 pw2.addEventListener("keyup", comparePw);
 pw2.addEventListener("change", comparePw);
+pw2.addEventListener("focus", comparePw);
 // -------- 이름 양식 확인 -----------
 userName.addEventListener("keyup", checkName);
 userName.addEventListener("change", checkName);
+userName.addEventListener("focus", checkName);
 // -------- 생년월일 양식 확인 -----------
 yy.addEventListener("keydown", isBirthCompleted);
 yy.addEventListener("change", isBirthCompleted);
@@ -61,6 +64,7 @@ gender.addEventListener("change",checkgender);
 // -------- 휴대폰 양식 확인 -----------
 mobile.addEventListener("keyup", checkPhoneNum);
 mobile.addEventListener("change", checkPhoneNum);
+mobile.addEventListener("focus", checkPhoneNum);
 
 /*콜백 함수*/
 function checkgender() {
@@ -153,7 +157,7 @@ function checkPw() {
 }
 
 function comparePw() {
-    if(pw2.value === pw1.value) {
+    if(pw2.value === pw1.value && !(pw2.value === "" && pw1.value === "")) {
         pwImg2.src = "video/m_icon_check_enable.png";
         error[2].style.display = "none";
         check_pw2 = true;

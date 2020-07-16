@@ -18,6 +18,7 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
+	int widthBlock = pageInfo.getWidthBlock();
 	
 %>
 <!DOCTYPE html>
@@ -56,13 +57,13 @@
 		<%
 			if(boardList != null && listCount > 0) {
 		%>
-		<table class="table text-center table-bordered table-hover">
+		<table class="table text-center table-bordered table-hover" style="table-layout: fixed">
 			<thead class="thead-dark">
 				<tr>
 					<th style = "width: 5%">번호</th>
 					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일</th>
+					<th style = "width: 15%">작성자</th>
+					<th style = "width: 10%">작성일</th>
 					<th style = "width: 7%">조회수</th>
 				</tr>
 			</thead>
@@ -73,7 +74,7 @@
 				%>
 				<tr>
 					<td><%=boardList.get(i).getBoard_num() %></td>
-					<td><%=boardList.get(i).getBoard_title() %></td>
+					<td><a href="boardview.do?board_num=<%=boardList.get(i).getBoard_num() %>&page=<%=nowPage %>"><%=boardList.get(i).getBoard_title() %></a></td>
 					<td><%=boardList.get(i).getBoard_username() %></td>
 					<td><%=boardList.get(i).getBoard_date() %></td>
 					<td><%=boardList.get(i).getBoard_readcount() %></td>
@@ -96,7 +97,29 @@
 	
 	<div>
 		<ul class="pagination">
-    		
+    		<li class='page-item ml-auto <%=nowPage <= 5 ? "disabled" : "" %>'>
+        		<a <%=nowPage <= 5 ? "tabindex='-1'" : "" %> class="page-link" href="boardlist.do?page=<%=nowPage - widthBlock%>">&laquo;</a>
+	   		</li>
+	   							<!-- 탭 안되게 할려면 -1 -->
+    		<li class="page-item <%=nowPage == 1 ? "disabled" : ""%>">
+       			<a <%=nowPage == 1 ? "tabindex='-1'" : ""%> class="page-link" href="boardlist.do?page=<%=nowPage - 1%>">&lt;</a>
+   			</li>
+   			<%
+   				for(int i = startPage; i <= endPage; i++) {
+   			%>
+	    	<li class="page-item <%=nowPage == i ? "active" : ""%>">
+	    		<a class="page-link" href="boardlist.do?page=<%=i%>"><%=i%></a>
+	    	</li>
+	    	<%
+   				}
+	    	%>
+	    	<li class="page-item <%=maxPage == nowPage ? "disabled" : ""%>">
+        		<a <%=maxPage == nowPage ? "tabindex='-1'" : ""%> class="page-link" href="boardlist.do?page=<%=nowPage + 1%>">&gt;</a>
+	    	</li>
+	    	
+	    	<li class="page-item mr-auto <%=maxPage - nowPage < 5 ? "disabled" : "" %>">
+        		<a <%=maxPage - nowPage < 5 ? "tabindex='-1'" : "" %> class="page-link" href="boardlist.do?page=<%=nowPage + widthBlock%>">&raquo;</a>
+		    </li>
 	 	</ul>
 	</div>
 </div>

@@ -7,7 +7,16 @@ public class PageInfo {
 	private int startPage;
 	private int endPage;
 	private int listCount;
+	private int widthBlock = 5;
 	
+	public int getWidthBlock() {
+		return widthBlock;
+	}
+
+	public void setWidthBlock(int widthBlock) {
+		this.widthBlock = widthBlock;
+	}
+
 	public int getPage() {
 		return page;
 	}

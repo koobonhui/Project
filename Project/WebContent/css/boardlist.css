@@ -46,7 +46,7 @@ ul {
 	overflow: hidden;
 }
 
-li {
+.navbar li {
 	float: left;
 	margin-right: 70px;
 }

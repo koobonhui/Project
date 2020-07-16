@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.BoardListAction;
+import action.BoardModifyAction;
+import action.BoardModifyFormAction;
+import action.BoardViewAction;
 import action.BoardWriteAction;
 //import action772.MemberDeleteAction;
 import action.MemberJoinAction;
@@ -93,9 +96,30 @@ public class MemberFrontController extends HttpServlet {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			} 
 		} else if(command.equals("/boardlist.do")) {	// 게시판 리스트 목록 Action
 			action = new BoardListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardview.do")) {	// 게시판 글 보기 Action
+			action = new BoardViewAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardmodifyform.do")) {	// 게시판 글 수정하기 Action
+			action = new BoardModifyFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardModifyAction.do")) {	// 게시판 글 수정하기 Action
+			action = new BoardModifyAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

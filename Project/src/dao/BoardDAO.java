@@ -4,6 +4,7 @@ import static db.JdbcUtil.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import vo.BoardBean;
@@ -102,5 +103,71 @@ public class BoardDAO {
 			close(pstmt);
 		}
 		return listCount;
+	}
+	
+	//글 내용 보기
+	public BoardBean boardview(int board_num) {
+
+		BoardBean boardview = null;
+
+		try {
+			pstmt = conn.prepareStatement("select * from board where board_num = ?");
+			pstmt.setInt(1, board_num);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				boardview = new BoardBean();
+				boardview.setBoard_num(rs.getInt("board_num"));
+				boardview.setBoard_title(rs.getString("board_title"));
+				boardview.setBoard_content(rs.getString("board_content"));
+				boardview.setBoard_username(rs.getString("board_username"));
+			}
+		} catch(Exception ex) {
+			System.out.println("boardview 에러 : " + ex);
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return boardview;
+	}
+	
+	// 조회수 업데이트.
+	public int updateReadCount(int board_num) {
+
+		int updateCount = 0;
+		
+		String sql = "update board set board_readcount = board_readcount + 1 where board_num = ?";
+
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			updateCount = pstmt.executeUpdate();
+		} catch(SQLException ex) {
+			System.out.println("updateReadCount 에러 : "+ex);
+		} finally {
+			close(pstmt);
+		}
+		return updateCount;
+	}
+	
+	// 글 수정
+	public int updateBoard(BoardBean modifyBoard){
+
+		int updateCount = 0;
+		String sql="update board set board_title=?, board_content=? where board_num=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, modifyBoard.getBoard_title());
+			pstmt.setString(2, modifyBoard.getBoard_content());
+			pstmt.setInt(3, modifyBoard.getBoard_num());
+			updateCount = pstmt.executeUpdate();
+		} catch(Exception ex) {
+			System.out.println("boardModify 에러 : " + ex);
+		} finally {
+			close(pstmt);
+		}
+
+		return updateCount;
 	}
 }
