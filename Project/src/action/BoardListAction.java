@@ -3,6 +3,8 @@ package action;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import svc.BoardDeleteService;
 import svc.BoardListService;
 import vo.ActionForward;
 import vo.BoardBean;
@@ -31,7 +33,10 @@ public class BoardListAction implements Action {
    	        int endPage = startPage + 10 - 1;
 
    		if (endPage> maxPage) endPage = maxPage;
-
+   		
+   		BoardDeleteService boardDeleteService = new BoardDeleteService();	// 재정렬
+		boardDeleteService.Rearrangement();
+   		
    		PageInfo pageInfo = new PageInfo();
    		pageInfo.setEndPage(endPage);
    		pageInfo.setListCount(listCount);

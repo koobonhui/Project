@@ -8,13 +8,14 @@ public class PageInfo {
 	private int endPage;
 	private int listCount;
 	private int widthBlock = 5;
+	private int pageRows = 10;
 	
-	public int getWidthBlock() {
-		return widthBlock;
+	public int getPageRows() {
+		return pageRows;
 	}
 
-	public void setWidthBlock(int widthBlock) {
-		this.widthBlock = widthBlock;
+	public int getWidthBlock() {
+		return widthBlock;
 	}
 
 	public int getPage() {

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import action.Action;
+import action.BoardDeleteAction;
 import action.BoardListAction;
 import action.BoardModifyAction;
 import action.BoardModifyFormAction;
@@ -120,7 +121,14 @@ public class MemberFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/boardModifyAction.do")) {	// 게시판 글 수정하기 Action
 			action = new BoardModifyAction();
-			try {
+			try { 
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardDelete.do")) {	// 게시판 글 삭제하기 Action
+			action = new BoardDeleteAction();
+			try { 
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();

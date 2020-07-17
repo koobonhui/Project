@@ -10,7 +10,7 @@
 	if(session.getAttribute("id") != null) {
 		userId = (String)session.getAttribute("id");
 	}
-	
+
 	ArrayList<BoardBean> boardList = (ArrayList<BoardBean>)request.getAttribute("boardList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	int listCount = pageInfo.getListCount();
@@ -98,7 +98,7 @@
 	<div>
 		<ul class="pagination">
     		<li class='page-item ml-auto <%=nowPage <= 5 ? "disabled" : "" %>'>
-        		<a <%=nowPage <= 5 ? "tabindex='-1'" : "" %> class="page-link" href="boardlist.do?page=<%=nowPage - widthBlock%>">&laquo;</a>
+        		<a <%=nowPage <= 5 ? "tabindex='-1'" : "" %> class="page-link" href="boardlist.do?page=<%=nowPage - (widthBlock + 1)%>">&laquo;</a>
 	   		</li>
 	   							<!-- 탭 안되게 할려면 -1 -->
     		<li class="page-item <%=nowPage == 1 ? "disabled" : ""%>">
@@ -118,7 +118,7 @@
 	    	</li>
 	    	
 	    	<li class="page-item mr-auto <%=maxPage - nowPage < 5 ? "disabled" : "" %>">
-        		<a <%=maxPage - nowPage < 5 ? "tabindex='-1'" : "" %> class="page-link" href="boardlist.do?page=<%=nowPage + widthBlock%>">&raquo;</a>
+        		<a <%=maxPage - nowPage < 5 ? "tabindex='-1'" : "" %> class="page-link" href="boardlist.do?page=<%=nowPage + (widthBlock + 1)%>">&raquo;</a>
 		    </li>
 	 	</ul>
 	</div>

@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 </head>
 <body>
+<!-- ===================== header =========================== -->
 <header>
 	<h1 id = "logo"><img src = "video/logo.png" /></h1>
 	
@@ -38,7 +39,7 @@
 		<%=userId.equals("") ? "<a href = 'memberLogin.do' class = 'button push'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
 	</div>
 </header>
-
+<!-- ===================== section 1page =========================== -->
 <div id = "full-page">
 	<div class = "section">		
 		<video id="myVideo" loop muted data-autoplay>
@@ -56,7 +57,7 @@
 			<small class="animated heartBeat delay-2s">스크롤을 내려주세요</small>
 		</div>
 	</div>
-	
+<!-- ===================== section 2page =========================== -->	
 	<div class = "section">
 		<div class="slide">
 			<div class = "box_cir">
@@ -65,6 +66,7 @@
 				<a href = "https://www.youtube.com/channel/UC-IYpdOqjkER7B6cnChwlhA" target="_blank"><img class = "animated infinite swing slow" src = "video/youtubeicon.png"></a>
 			</div>
 		</div>
+		
 		<div class="slide">
 			<div class = "box_cir">
 				<div class = "circle2"></div>
@@ -72,6 +74,7 @@
 				<a href = "https://www.youtube.com/channel/UCeXxAet11DPbC8pG-lBOUTQ" target="_blank"><img class = "animated infinite swing slow" src = "video/youtubeicon.png"></a>
 			</div>
 		</div>
+		
 		<div class="slide">
 			<div class = "box_cir">
 				<div class = "circle3"></div>
@@ -80,7 +83,7 @@
 			</div>
 		</div>
 	</div>
-	
+<!-- ===================== section 3page =========================== -->
 	<div class = "section">
 		<div id = "map_introduce">
 			<h2>찾아 오시는 길</h2>
@@ -90,7 +93,7 @@
 			<div id="daumRoughmapContainer1593044858680" class="root_daum_roughmap root_daum_roughmap_landing"></div>
 		</div>
 	</div>
-	
+<!-- ===================== section footer =========================== -->	
 	<div class = "section fp-auto-height">
 		<div id = "copy">
 			<span>Copyright ⓒCome See Me All rights reserved.</span>

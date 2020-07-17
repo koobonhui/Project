@@ -5,16 +5,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import vo.BoardBean;
+import vo.PageInfo;
 
 public class BoardDAO {
 
 	private static BoardDAO boardDAO;
 	Connection conn;
+	Statement stmt;
 	PreparedStatement pstmt;
 	ResultSet rs;
+	PageInfo pageinfo = new PageInfo();
 	
 	public BoardDAO() {
 		
@@ -34,9 +38,12 @@ public class BoardDAO {
 	// 글 등록하기.	
 	public int insertWrite(BoardBean write) {
 		String sql = "insert into board(board_title, board_username , board_date, board_readcount, board_content) values(?, ?, now(), ?, ?)";
+		String sql2 = "ALTER TABLE board AUTO_INCREMENT=1";
 		int insertCount = 0;
 		
 		try {
+			stmt = conn.createStatement();
+			stmt.executeUpdate(sql2);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, write.getBoard_title());
 			pstmt.setString(2, write.getBoard_username());
@@ -105,13 +112,34 @@ public class BoardDAO {
 		return listCount;
 	}
 	
+	public int totalBlock() {	// 전체 블록의 수
+		if(selectListCount() % (pageinfo.getWidthBlock() * pageinfo.getPageRows()) > 0) {
+			return selectListCount() / (pageinfo.getWidthBlock() * pageinfo.getPageRows()) + 1;
+		}
+		return selectListCount() / (pageinfo.getWidthBlock() * pageinfo.getPageRows());
+	}
+	
+	public int currentBlock(int nowpage) {		// 현재 블럭의 수
+		if(nowpage % pageinfo.getWidthBlock() > 0) {
+			return nowpage / pageinfo.getWidthBlock() + 1;
+		}
+		return nowpage / pageinfo.getWidthBlock();
+	}
+	
+	public int totalPage() {		// 전체 페이지 수를 계산하는 메소드
+		if(selectListCount() % pageinfo.getPageRows() > 0) {
+			return selectListCount() / pageinfo.getPageRows() + 1;
+		}
+		return selectListCount() / pageinfo.getPageRows();
+	}
+	
 	//글 내용 보기
 	public BoardBean boardview(int board_num) {
-
+		String sql = "select * from board where board_num = ?";
 		BoardBean boardview = null;
 
 		try {
-			pstmt = conn.prepareStatement("select * from board where board_num = ?");
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, board_num);
 			rs = pstmt.executeQuery();
 
@@ -151,10 +179,10 @@ public class BoardDAO {
 	}
 	
 	// 글 수정
-	public int updateBoard(BoardBean modifyBoard){
+	public int updateBoard(BoardBean modifyBoard) {
 
 		int updateCount = 0;
-		String sql="update board set board_title=?, board_content=? where board_num=?";
+		String sql = "update board set board_title=?, board_content=? where board_num=?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -169,5 +197,44 @@ public class BoardDAO {
 		}
 
 		return updateCount;
+	}
+	
+	// 글 삭제
+	public int deleteBoard(int board_num) {
+
+		String sql = "delete from board where board_num=?";
+		int deleteCount = 0;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			deleteCount = pstmt.executeUpdate();
+		} catch(Exception ex) {
+			System.out.println("boardDelete 에러 : "+ex);
+		}	finally{
+			close(pstmt);
+		}
+		
+		return deleteCount;
+	}
+	
+	// 게시판 재정렬
+	public int Rearrangement() {
+
+		String sql1 = "SET @COUNT = 0";
+		String sql2 = "UPDATE board SET board.board_num = @COUNT:=@COUNT+1";
+		int Rearrangement = 0;
+
+		try {
+			stmt = conn.createStatement();
+			stmt.executeUpdate(sql1);
+			Rearrangement = stmt.executeUpdate(sql2);
+		} catch(Exception ex) {
+			System.out.println("Rearrangement 에러 : "+ex);
+		}	finally{
+			close(stmt);
+		}
+		
+		return Rearrangement;
 	}
 }

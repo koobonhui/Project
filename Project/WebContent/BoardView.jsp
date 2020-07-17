@@ -65,7 +65,7 @@
 			String writer = boardview.getBoard_username();
 			if(writer.equals(userId)) {
 		%>
-			<a href="delAction.jsp?bbsId=<%=boardview.getBoard_num() %>" class="btn btn-danger float-right" onclick = "return confirm('정말 삭제하시겠습니까?')">삭제</a>
+			<a href="boardDelete.do?board_num=<%=boardview.getBoard_num() %>&page=<%=nowPage %>" class="btn btn-danger float-right" onclick = "return confirm('정말 삭제하시겠습니까?')">삭제</a>
 			<a href="boardmodifyform.do?board_num=<%=boardview.getBoard_num() %>&page=<%=nowPage %>" class="btn btn-warning float-right mr-1">수정</a>
 		<%
 			}
