@@ -1,9 +1,9 @@
-$(window).on('load',function(){
+$(window).on('load',function() {
 	waterFall();
-	var dataInt={"data":[{"src":"youtube1.jpg"},{"src":"youtube2.jpg"},{"src":"youtube3.jpg"},{"src":"youtube1.jpg"}]};
-	$(window).on('scroll',function(){
-		if(checkScrollSlide()){
-			$.each(dataInt.data,function(key,value){
+	var dataInt = {"data":[{"src":"youtube1.jpg"},{"src":"youtube2.jpg"},{"src":"youtube3.jpg"},{"src":"youtube1.jpg"}]};
+	$(window).on('scroll',function() {
+		if(checkScrollSlide()) {
+			$.each(dataInt.data, function(key,value) {
 				var oBox=$('<div>').addClass('box').appendTo($('#main'));
 				var oPic=$('<div>').addClass('pic').appendTo(oBox);
 				$('<img>').attr('src','video/'+$(value).attr('src')).appendTo(oPic);
@@ -18,13 +18,13 @@ function waterFall() {
 	var w=$boxs.eq(0).outerWidth();
 	var cols=Math.floor($(window).width()/w);
 	$("#main").width(w*cols).css('margin','0 auto');
-	var hArr=[];
-	$boxs.each(function(index,value){
-		var h=$boxs.eq(index).outerHeight();
+	var hArr = [];
+	$boxs.each(function(index,value) {
+		var h = $boxs.eq(index).outerHeight();
 		if(index<cols){
 			hArr.push(h);
 		}else {
-			minH=Math.min.apply(null,hArr);
+			minH = Math.min.apply(null,hArr);
 			var minHeightIndex=$.inArray(minH,hArr);
 			// console.log(value);
 			$(value).css({

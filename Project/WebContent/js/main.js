@@ -1,4 +1,15 @@
-$(document).ready(function(){	
+$(document).ready(function() {
+	
+	$('#play').click( function() {
+	    $(this).toggleClass('toggle');
+	    var myVideo = document.getElementById("myVideo"); 
+		if (myVideo.paused) { 
+			myVideo.play(); 
+		} else { 
+			myVideo.pause(); 
+		} 
+	});
+	
 	// Variables
 	var clickedTab = $(".tabs > .active");
 	var tabWrapper = $(".tab__content");
@@ -53,12 +64,13 @@ $(document).ready(function(){
 	});	
 });
 
-function play_pause() { 
-	var myVideo = document.getElementById("myVideo"); 
-	if (myVideo.paused) { 
-		myVideo.play(); 
-	} else { 
-		myVideo.pause(); 
-	} 
-}
+//function play_pause() { 
+//	var myVideo = document.getElementById("myVideo"); 
+//	if (myVideo.paused) { 
+//		myVideo.play(); 
+//	} else { 
+//		myVideo.pause(); 
+//	} 
+//}
+
 

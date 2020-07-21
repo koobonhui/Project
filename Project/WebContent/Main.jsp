@@ -47,10 +47,9 @@
 			<source src="video/MainIntro.webm" type="video/webm">
 		</video>
 		
-		<div class="slideThree">  
-      		<input type="checkbox" value="None" id="slideThree" name="check" checked onclick="play_pause()"/>
-      		<label for="slideThree"></label>
-    	</div>
+		<div id="play">
+  			<div id="me"></div>
+		</div>
 		
 		<div id = "scroll">
 			<span></span><span></span><span></span>
