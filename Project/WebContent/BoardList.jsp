@@ -95,12 +95,9 @@
 		<a href="boardwrite.do" class="btn btn-primary float-right" id="writeBtn">글쓰기</a>		
 	</div>
 	
-	<div>
+	<div class = "container">
 		<ul class="pagination">
-    		<li class='page-item ml-auto <%=nowPage <= 5 ? "disabled" : "" %>'>
-        		<a <%=nowPage <= 5 ? "tabindex='-1'" : "" %> class="page-link" href="boardlist.do?page=<%=nowPage - (widthBlock + 1)%>">&laquo;</a>
-	   		</li>
-	   							<!-- 탭 안되게 할려면 -1 -->
+	   		<!-- 탭 안되게 할려면 -1 -->
     		<li class="page-item <%=nowPage == 1 ? "disabled" : ""%>">
        			<a <%=nowPage == 1 ? "tabindex='-1'" : ""%> class="page-link" href="boardlist.do?page=<%=nowPage - 1%>">&lt;</a>
    			</li>
@@ -115,11 +112,7 @@
 	    	%>
 	    	<li class="page-item <%=maxPage == nowPage ? "disabled" : ""%>">
         		<a <%=maxPage == nowPage ? "tabindex='-1'" : ""%> class="page-link" href="boardlist.do?page=<%=nowPage + 1%>">&gt;</a>
-	    	</li>
-	    	
-	    	<li class="page-item mr-auto <%=maxPage - nowPage < 5 ? "disabled" : "" %>">
-        		<a <%=maxPage - nowPage < 5 ? "tabindex='-1'" : "" %> class="page-link" href="boardlist.do?page=<%=nowPage + (widthBlock + 1)%>">&raquo;</a>
-		    </li>
+	    	</li>	
 	 	</ul>
 	</div>
 </div>
