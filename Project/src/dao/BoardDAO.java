@@ -211,7 +211,7 @@ public class BoardDAO {
 			deleteCount = pstmt.executeUpdate();
 		} catch(Exception ex) {
 			System.out.println("boardDelete 에러 : "+ex);
-		}	finally{
+		} finally {
 			close(pstmt);
 		}
 		

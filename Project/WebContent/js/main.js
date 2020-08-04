@@ -63,7 +63,9 @@ $(document).ready(function() {
 		});
 	});	
 });
-
+function link() {
+	location.href = "memberLogin.do";
+}
 //function play_pause() { 
 //	var myVideo = document.getElementById("myVideo"); 
 //	if (myVideo.paused) { 

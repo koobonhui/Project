@@ -39,16 +39,16 @@
 	
 	<nav class="navbar">
 	  	<ul>
-		    <li><a href="memberMain.do">홈</a></li>
-		    <li><a href="#">소개</a></li>
-		    <li><a href="boardlist.do">게시판</a></li>
-		    <li><a href="gallery.do">갤러리</a></li>
+		    <li><a href="memberMain.do" style="text-decoration: none;">홈</a></li>
+		    <li><a href="#" style="text-decoration: none;">소개</a></li>
+		    <li><a href="boardlist.do" style="text-decoration: none;">게시판</a></li>
+		    <li><a href="gallery.do" style="text-decoration: none;">갤러리</a></li>
 	  	</ul>
 	</nav>
 	
 	<div class = "login">
 		<span style = "margin-left: 10px"><%=userId.equals("") ? "" : userId + " 님 반갑습니다."%></span>
-		<%=userId.equals("") ? "<a href = 'memberLogin.do'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
+		<%=userId.equals("") ? "<a href = 'memberLogin.do' style='text-decoration: none;'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
 	</div>
 </header>
 

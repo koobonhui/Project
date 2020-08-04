@@ -35,8 +35,10 @@
 	</nav>
 	
 	<div class = "login">
+<%-- 		<span style = "margin-left: 10px"><%=userId.equals("") ? "" : userId + " 님 반갑습니다."%></span> --%>
+<%-- 		<%=userId.equals("") ? "<a href = 'memberLogin.do'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%> --%>
 		<span style = "margin-left: 10px"><%=userId.equals("") ? "" : userId + " 님 반갑습니다."%></span>
-		<%=userId.equals("") ? "<a href = 'memberLogin.do' class = 'button push'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
+		<%=userId.equals("") ? "<button class='learn-more' onclick='link();'>Login</button>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
 	</div>
 </header>
 <!-- ===================== section 1page =========================== -->
@@ -64,6 +66,12 @@
 				<div class = "box_text">소녀의 행성</div>
 				<a href = "https://www.youtube.com/channel/UC-IYpdOqjkER7B6cnChwlhA" target="_blank"><img class = "animated infinite swing slow" src = "video/youtubeicon.png"></a>
 			</div>
+			
+			<div class = "youtube">
+				<iframe width="700" height="450" src="https://www.youtube.com/embed/arWGAjTRjZU" 
+				frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen></iframe>
+			</div>
 		</div>
 		
 		<div class="slide">
@@ -71,6 +79,12 @@
 				<div class = "circle2"></div>
 				<div class = "box_text">아리둥절 Ari the Corgi</div>
 				<a href = "https://www.youtube.com/channel/UCeXxAet11DPbC8pG-lBOUTQ" target="_blank"><img class = "animated infinite swing slow" src = "video/youtubeicon.png"></a>
+			</div>
+			
+			<div class = "youtube">
+				<iframe width="700" height="450" src="https://www.youtube.com/embed/Y-XwuaJ9eYc" 
+				frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen></iframe>
 			</div>
 		</div>
 		
@@ -80,6 +94,12 @@
 				<div class = "box_text">속삭이는 몽자</div>
 				<a href = "https://www.youtube.com/user/CHUCHU7325" target="_blank"><img class = "animated infinite swing slow" src = "video/youtubeicon.png"></a>
 			</div>
+			
+			<div class = "youtube">
+				<iframe width="700" height="450" src="https://www.youtube.com/embed/sXhsePfNcSc" 
+				frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen></iframe>
+			</div>
 		</div>
 	</div>
 <!-- ===================== section 3page =========================== -->
@@ -88,8 +108,11 @@
 			<h2>찾아 오시는 길</h2>
 		</div>
 		
+<!-- 		<div id = "map"> -->
+<!-- 			<div id="daumRoughmapContainer1593044858680" class="root_daum_roughmap root_daum_roughmap_landing"></div> -->
+<!-- 		</div> -->
 		<div id = "map">
-			<div id="daumRoughmapContainer1593044858680" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.6604808673546!2d126.97262231608447!3d37.586611830734384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2b7ef94a16b%3A0xb16d5f135eaaddc!2z7LKt7JmA64yA!5e0!3m2!1sko!2skr!4v1588826305729!5m2!1sko!2skr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 		</div>
 	</div>
 <!-- ===================== section footer =========================== -->	
