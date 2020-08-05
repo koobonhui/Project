@@ -55,7 +55,6 @@
 		
 		<div id = "scroll">
 			<span></span><span></span><span></span>
-			<small class="animated heartBeat delay-2s">스크롤을 내려주세요</small>
 		</div>
 	</div>
 <!-- ===================== section 2page =========================== -->	

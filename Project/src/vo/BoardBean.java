@@ -9,7 +9,21 @@ public class BoardBean {
 	private String board_username;
 	private Date board_date;
 	private int board_readcount;
+	private String board_option;
+	private String board_search;
 	
+	public String getBoard_search() {
+		return board_search;
+	}
+	public void setBoard_search(String board_search) {
+		this.board_search = board_search;
+	}
+	public String getBoard_option() {
+		return board_option;
+	}
+	public void setBoard_option(String board_option) {
+		this.board_option = board_option;
+	}
 	public int getBoard_num() {
 		return board_num;
 	}

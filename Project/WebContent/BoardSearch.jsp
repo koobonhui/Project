@@ -1,3 +1,4 @@
+<%@page import="vo.PageInfo2"%>
 <%@page import="vo.BoardBean"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,14 +12,16 @@
 		userId = (String)session.getAttribute("id");
 	}
 
-	ArrayList<BoardBean> boardList = (ArrayList<BoardBean>)request.getAttribute("boardList");
-	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-	int listCount = pageInfo.getListCount();
-	int nowPage = pageInfo.getPage();
-	int maxPage = pageInfo.getMaxPage();
-	int startPage = pageInfo.getStartPage();
-	int endPage = pageInfo.getEndPage();
-	int widthBlock = pageInfo.getWidthBlock();
+	ArrayList<BoardBean> boardSearch = (ArrayList<BoardBean>)request.getAttribute("boardSearch");
+	PageInfo2 pageInfo2 = (PageInfo2)request.getAttribute("pageInfo");
+	String board_option = (String)session.getAttribute("option");
+	String board_search = (String)session.getAttribute("search");
+	int listCount = pageInfo2.getListCount();
+	int nowPage = pageInfo2.getPage();
+	int maxPage = pageInfo2.getMaxPage();
+	int startPage = pageInfo2.getStartPage();
+	int endPage = pageInfo2.getEndPage();
+	int widthBlock = pageInfo2.getWidthBlock();
 	
 %>
 <!DOCTYPE html>
@@ -55,7 +58,7 @@
 <div class="container pt-3">
 	<div class="row">
 		<%
-			if(boardList != null && listCount > 0) {
+			if(boardSearch != null && listCount > 0) {
 		%>
 		<table class="table text-center table-bordered table-hover" style="table-layout: fixed">
 			<thead class="thead-dark">
@@ -70,14 +73,14 @@
 			
 			<tbody>
 				<%
-					for(int i = 0; i < boardList.size(); i++) {
+					for(int i = 0; i < boardSearch.size(); i++) {
 				%>
 				<tr>
-					<td><%=boardList.get(i).getBoard_num() %></td>
-					<td><a href="boardview.do?board_num=<%=boardList.get(i).getBoard_num() %>&page=<%=nowPage %>"><%=boardList.get(i).getBoard_title() %></a></td>
-					<td><%=boardList.get(i).getBoard_username() %></td>
-					<td><%=boardList.get(i).getBoard_date() %></td>
-					<td><%=boardList.get(i).getBoard_readcount() %></td>
+					<td><%=boardSearch.get(i).getBoard_num() %></td>
+					<td><a href="boardview.do?board_num=<%=boardSearch.get(i).getBoard_num() %>&page=<%=nowPage %>"><%=boardSearch.get(i).getBoard_title() %></a></td>
+					<td><%=boardSearch.get(i).getBoard_username() %></td>
+					<td><%=boardSearch.get(i).getBoard_date() %></td>
+					<td><%=boardSearch.get(i).getBoard_readcount() %></td>
 				</tr>
 				<%
 					}
@@ -86,55 +89,31 @@
 		</table>
 		<%
 			} else {
-				out.println("<article id='emptyArea'>등록된 글이 없습니다.</article>");
+				out.println("<article id='emptyArea'>찾는글이없음.</article>");
 			}
 		%>
 	</div>
-	
-	<div class = "clearfix">
-		<a href="boardwrite.do" class="btn btn-primary float-right" id="writeBtn">글쓰기</a>		
-	</div>
-	
-	<form method="post" action="boardSearchAction.do">
-	<div class="form-row center-block">
-		<select id="inputState" class="form-control" style="width: 10%;" name="board_option">
-		  <option selected value="board_title">제목</option>
-		  <option value="board_username">글쓴이</option>
-		</select>
-		
-		<div class="input-group mb-3" style="width: 30%;">
-			<input type="text" class="form-control" 
-			placeholder="검색어를 입력하세요." aria-label="검색어를 입력하세요." 
-			aria-describedby="button-addon2" name="board_search" id = "search">
-			
-			<div class="input-group-append">
-				<button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="return check();">검색</button>
-			</div>
-		</div>
-	</div>
-	</form>
 	
 	<div class = "container">
 		<ul class="pagination">
 	   		<!-- 탭 안되게 할려면 -1 -->
     		<li class="page-item <%=nowPage == 1 ? "disabled" : ""%>">
-       			<a <%=nowPage == 1 ? "tabindex='-1'" : ""%> class="page-link" href="boardlist.do?page=<%=nowPage - 1%>">&lt;</a>
+       			<a <%=nowPage == 1 ? "tabindex='-1'" : ""%> class="page-link" href="boardSearchAction.do?page=<%=nowPage - 1%>&board_option=<%=board_option%>&board_search=<%=board_search%>">&lt;</a>
    			</li>
    			<%
    				for(int i = startPage; i <= endPage; i++) {
    			%>
 	    	<li class="page-item <%=nowPage == i ? "active" : ""%>">
-	    		<a class="page-link" href="boardlist.do?page=<%=i%>"><%=i%></a>
+	    		<a class="page-link" href="boardSearchAction.do?page=<%=i%>&board_option=<%=board_option%>&board_search=<%=board_search%>"><%=i%></a>
 	    	</li>
 	    	<%
    				}
 	    	%>
 	    	<li class="page-item <%=maxPage == nowPage ? "disabled" : ""%>">
-        		<a <%=maxPage == nowPage ? "tabindex='-1'" : ""%> class="page-link" href="boardlist.do?page=<%=nowPage + 1%>">&gt;</a>
+        		<a <%=maxPage == nowPage ? "tabindex='-1'" : ""%> class="page-link" href="boardSearchAction.do?page=<%=nowPage + 1%>&board_option=<%=board_option%>&board_search=<%=board_search%>">&gt;</a>
 	    	</li>	
 	 	</ul>
 	</div>
 </div>
 </body>
-<script src = "js/boardlist.js"></script>
 </html>

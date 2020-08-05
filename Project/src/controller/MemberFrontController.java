@@ -14,6 +14,7 @@ import action.BoardDeleteAction;
 import action.BoardListAction;
 import action.BoardModifyAction;
 import action.BoardModifyFormAction;
+import action.BoardSearchAction;
 import action.BoardViewAction;
 import action.BoardWriteAction;
 //import action772.MemberDeleteAction;
@@ -128,6 +129,13 @@ public class MemberFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/boardDelete.do")) {	// 게시판 글 삭제하기 Action
 			action = new BoardDeleteAction();
+			try { 
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardSearchAction.do")) {	// 게시판 글 검색 Action
+			action = new BoardSearchAction();
 			try { 
 				forward = action.execute(request, response);
 			} catch (Exception e) {

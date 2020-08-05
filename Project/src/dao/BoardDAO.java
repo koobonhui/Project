@@ -112,6 +112,38 @@ public class BoardDAO {
 		return listCount;
 	}
 	
+	public int selectSearchCount(BoardBean search) {
+		String sql = "select count(*) from board where board_title like ?";
+		String sql2 = "select count(*) from board where board_username like ?";
+		int searchCount = 0;
+
+		try {
+			if(search.getBoard_option().equals("board_title")) {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%" + search.getBoard_search() + "%");
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					searchCount = rs.getInt(1);
+				}
+			} else {
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setString(1, "%" + search.getBoard_search() + "%");
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					searchCount = rs.getInt(1);
+				}
+			}
+		} catch(Exception ex) {
+			System.out.println("searchCount 에러: " + ex);			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return searchCount;
+	}
+	
 	public int totalBlock() {	// 전체 블록의 수
 		if(selectListCount() % (pageinfo.getWidthBlock() * pageinfo.getPageRows()) > 0) {
 			return selectListCount() / (pageinfo.getWidthBlock() * pageinfo.getPageRows()) + 1;
@@ -236,5 +268,56 @@ public class BoardDAO {
 		}
 		
 		return Rearrangement;
+	}
+	
+	public ArrayList<BoardBean> boardSearch(int page, int limit, BoardBean search) {
+		String sql = "select * from board where board_title like ? order by board_title desc limit ?, 10";
+		String sql2 = "select * from board where board_username like ? order by board_username desc limit ?, 10";
+		ArrayList<BoardBean> boardSearch = new ArrayList<BoardBean>();
+		BoardBean searchboard = null;
+		
+		int startrow = (page - 1) * 10; //읽기 시작할 row 번호..	
+
+		try {
+			if(search.getBoard_option().equals("board_title")) {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%" + search.getBoard_search() + "%");
+				pstmt.setInt(2, startrow);
+				rs = pstmt.executeQuery();
+
+				while(rs.next()) {
+					searchboard = new BoardBean();
+					searchboard.setBoard_num(rs.getInt("board_num"));
+					searchboard.setBoard_title(rs.getString("board_title"));
+					searchboard.setBoard_username(rs.getString("board_username"));
+					searchboard.setBoard_date(rs.getDate("board_date"));
+					searchboard.setBoard_readcount(rs.getInt("board_readcount"));	
+					boardSearch.add(searchboard);
+				}
+			} else {
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setString(1, "%" + search.getBoard_search() + "%");
+				pstmt.setInt(2, startrow);
+				rs = pstmt.executeQuery();
+
+				while(rs.next()) {
+					searchboard = new BoardBean();
+					searchboard.setBoard_num(rs.getInt("board_num"));
+					searchboard.setBoard_title(rs.getString("board_title"));
+					searchboard.setBoard_username(rs.getString("board_username"));
+					searchboard.setBoard_date(rs.getDate("board_date"));
+					searchboard.setBoard_readcount(rs.getInt("board_readcount"));	
+					boardSearch.add(searchboard);
+				}
+			}
+			
+
+		} catch(Exception ex) {
+			System.out.println("boardSearch 에러 : " + ex);
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return boardSearch;
 	}
 }

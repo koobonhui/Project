@@ -6,30 +6,30 @@ import java.util.ArrayList;
 import dao.BoardDAO;
 import vo.BoardBean;
 
-public class BoardListService {
+public class BoardSearchService {
 	
-	public int getListCount() throws Exception{
+	public int getSearchCount(BoardBean search) throws Exception{
 		// TODO Auto-generated method stub
 		
 		int listCount = 0;
 		Connection conn = getConnection();
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(conn);
-		listCount = boardDAO.selectListCount();
-		System.out.println("서비스 리카 : " + listCount);
+		listCount = boardDAO.selectSearchCount(search);
 		close(conn);
+		System.out.println("서치 리카 : " + listCount);
 		return listCount;		
 	}
 
-	public ArrayList<BoardBean> getboardList(int page, int limit) throws Exception {
+	public ArrayList<BoardBean> boardSearch(int page, int limit, BoardBean search) throws Exception {
 		
-		ArrayList<BoardBean> boardList = null;
+		ArrayList<BoardBean> boardSearch = null;
 		Connection conn = getConnection();
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(conn);
-		boardList = boardDAO.boardList(page, limit);
+		boardSearch = boardDAO.boardSearch(page, limit, search);
 		close(conn);
-		return boardList;
+		return boardSearch;
 		
 	}
 
