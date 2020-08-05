@@ -52,6 +52,9 @@ public class MemberFrontController extends HttpServlet {
 		} else if(command.equals("/memberLogin.do")) {	// 로그인 jsp
 			forward = new ActionForward();
 			forward.setPath("/Login.jsp");
+		} else if(command.equals("/introduce.do")) {	// 소개 jsp
+			forward = new ActionForward();
+			forward.setPath("/Introduce.jsp");
 		} else if(command.equals("/memberJoin.do")) {	// 회원가입 jsp
 			forward = new ActionForward();
 			forward.setPath("/Join.jsp");

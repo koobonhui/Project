@@ -43,7 +43,7 @@
 	<nav class="navbar">
 	  	<ul>
 		    <li><a href="memberMain.do" style="text-decoration: none;">홈</a></li>
-		    <li><a href="#" style="text-decoration: none;">소개</a></li>
+		    <li><a href="introduce.do" style="text-decoration: none;">소개</a></li>
 		    <li><a href="boardlist.do" style="text-decoration: none;">게시판</a></li>
 		    <li><a href="gallery.do" style="text-decoration: none;">갤러리</a></li>
 	  	</ul>

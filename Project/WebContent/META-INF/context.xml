@@ -6,6 +6,12 @@
 	url = "jdbc:mysql://localhost:3306/project?useUnicode=true&amp;serverTimezone=Asia/Seoul"
 	maxActive = "500" maxIdle = "100" />
 	
+	<Resource name = "jdbc/koobonhui" auth = "Container" type ="javax.sql.DataSource"
+	username = "koobonhui" password="gjdlwo12!" driverClassName = "com.mysql.cj.jdbc.Driver"
+	factory = "org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+	url = "jdbc:mysql://localhost:3306/koobonhui?useUnicode=true&amp;serverTimezone=Asia/Seoul"
+	maxActive = "500" maxIdle = "100" />
+	
 <!-- 	디비를 추가할 때 마다 리소스 추가해야함 -->	
 <!-- 	오라클 버전 -->
 <!-- 	<Resource name = "jdbc/dog" auth = "Container" type ="javax.sql.DataSource" -->

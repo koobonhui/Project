@@ -24,7 +24,7 @@
 	<nav class="navbar">
 	  	<ul>
 		    <li><a href="memberMain.do">홈</a></li>
-		    <li><a href="#">소개</a></li>
+		    <li><a href="introduce.do">소개</a></li>
 		    <li><a href="boardlist.do">게시판</a></li>
 		    <li><a href="gallery.do">갤러리</a></li>
 	  	</ul>
@@ -36,10 +36,20 @@
 	</div>
 </header>
 <div id="main">
+<%-- 	<%  
+// 		int a[] = {1, 2, 3};
+// 		int x = 0;
+// 		while(x < 1) {
+// 			for(int i = 0; i < a.length; i++) {
+ 	%> --%>
   <div class="box">
-    <div class="pic"> <img src="video/youtube1.jpg"> </div>
+    <div class="pic"> <img src="video/youtube1<%--<%=a[i]%>--%>.jpg"> </div>
   </div>
-  <div class="box">
+<%--   <% 
+// 			}
+// 		}
+   %> --%>
+	<div class="box">
     <div class="pic"> <img src="video/youtube2.jpg"> </div>
   </div>
   <div class="box">

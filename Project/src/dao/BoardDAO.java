@@ -112,6 +112,7 @@ public class BoardDAO {
 		return listCount;
 	}
 	
+	// 게시판 검색 카운트
 	public int selectSearchCount(BoardBean search) {
 		String sql = "select count(*) from board where board_title like ?";
 		String sql2 = "select count(*) from board where board_username like ?";
@@ -270,6 +271,7 @@ public class BoardDAO {
 		return Rearrangement;
 	}
 	
+	// 게시판 검색
 	public ArrayList<BoardBean> boardSearch(int page, int limit, BoardBean search) {
 		String sql = "select * from board where board_title like ? order by board_title desc limit ?, 10";
 		String sql2 = "select * from board where board_username like ? order by board_username desc limit ?, 10";
@@ -311,7 +313,6 @@ public class BoardDAO {
 				}
 			}
 			
-
 		} catch(Exception ex) {
 			System.out.println("boardSearch 에러 : " + ex);
 		} finally {
