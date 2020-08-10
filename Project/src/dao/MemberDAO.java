@@ -4,7 +4,7 @@ import static db.JdbcUtil.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 import vo.MemberBean;
 
 public class MemberDAO {
@@ -29,6 +29,7 @@ public class MemberDAO {
 		this.conn = conn;
 	}
 	
+	// 로그인
 	public String selectLoginId(MemberBean member) {
 		String loginId = null;
 		String sql = "SELECT member_id FROM members WHERE member_id=? AND member_pw=?";
@@ -52,6 +53,7 @@ public class MemberDAO {
 		return loginId;
 	}
 	
+	// 회원가입
 	public int insertMember(MemberBean member) {
 		String sql = "INSERT INTO members VALUES(?, ?, ?, ?, ?, ?)";
 		int insertCount = 0;
@@ -74,6 +76,7 @@ public class MemberDAO {
 		return insertCount;
 	}
 	
+	// 회원중복 확인
 	public int OverLapId(MemberBean member) {
 		String sql = "SELECT member_id FROM members WHERE member_id=?";
 		
@@ -97,78 +100,81 @@ public class MemberDAO {
 		return -1;	// 디비 에러
 	}
 	
-//	public ArrayList<MemberBean> selectMemberList() {
-//		String sql = "SELECT * FROM members";
-//		ArrayList<MemberBean> memberList = new ArrayList<MemberBean>();
-//		MemberBean mb = null;
-//		try {
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			rs = pstmt.executeQuery();
-//			
-//			if(rs.next()) {
-//				do {
-//					mb = new MemberBean();
-//					mb.setMember_id(rs.getString("member_id"));
-//					mb.setMember_pw(rs.getString("member_pw"));
-//					mb.setMember_name(rs.getString("member_name"));
-//					mb.setMember_age(rs.getInt("member_age"));
-//					mb.setMember_gender(rs.getString("member_gender"));
-//					mb.setMember_email(rs.getString("member_email"));
-//					memberList.add(mb);
-//				} while(rs.next());
-//			}
-//		} catch(Exception ex) {
-//			System.out.println("getDeatilMember 에러: " + ex);			
-//		} finally {
-//			close(rs);
-//			close(pstmt);
-//		}
-//		return memberList;
-//	}
-//	
-//	public MemberBean selectMember(String viewId) {
-//		String sql = "SELECT * FROM members WHERE member_id=?";
-//		MemberBean mb = null;
-//		try {
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, viewId);
-//			rs = pstmt.executeQuery();
-//			
-//			if(rs.next()) {
-//				mb = new MemberBean();
-//				mb.setMember_id(rs.getString("member_id"));
-//				mb.setMember_pw(rs.getString("member_pw"));
-//				mb.setMember_name(rs.getString("member_name"));
-//				mb.setMember_age(rs.getInt("member_age"));
-//				mb.setMember_gender(rs.getString("member_gender"));
-//				mb.setMember_email(rs.getString("member_email"));
-//			}
-//		} catch(Exception ex) {
-//			System.out.println("getDeatilMember 에러: " + ex);			
-//		} finally {
-//			close(rs);
-//			close(pstmt);
-//		}
-//		
-//		return mb;
-//	}
-//	
-//	public int deleteMember(String deleteId) {
-//		String sql = "DELETE FROM members WHERE member_id=?";
-//		int deleteCount = 0;
-//
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, deleteId);
-//			deleteCount = pstmt.executeUpdate();
-//		} catch(Exception ex) {
-//			System.out.println("deleteMember 에러: " + ex);	
-//		} finally {
-//			close(pstmt);
-//		}
-//		
-//		return deleteCount;
-//	}
+	// 회원목록
+	public ArrayList<MemberBean> MemberList() {
+		String sql = "SELECT * FROM members";
+		ArrayList<MemberBean> memberList = new ArrayList<MemberBean>();
+		MemberBean mb = null;
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				do {
+					mb = new MemberBean();
+					mb.setMember_id(rs.getString("member_id"));
+					mb.setMember_pw(rs.getString("member_pw"));
+					mb.setMember_name(rs.getString("member_name"));
+					mb.setMember_birth(rs.getString("member_birth"));
+					mb.setMember_gender(rs.getString("member_gender"));
+					mb.setMember_phone(rs.getString("member_phone"));
+					memberList.add(mb);
+				} while(rs.next());
+			}
+		} catch(Exception ex) {
+			System.out.println("getDeatilMember 에러: " + ex);			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return memberList;
+	}
+	
+	// 회원정보 상세
+	public MemberBean selectMember(String member_id) {
+		String sql = "SELECT * FROM members WHERE member_id=?";
+		MemberBean mb = null;
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				mb = new MemberBean();
+				mb.setMember_id(rs.getString("member_id"));
+				mb.setMember_pw(rs.getString("member_pw"));
+				mb.setMember_name(rs.getString("member_name"));
+				mb.setMember_birth(rs.getString("member_birth"));
+				mb.setMember_gender(rs.getString("member_gender"));
+				mb.setMember_phone(rs.getString("member_phone"));
+			}
+		} catch(Exception ex) {
+			System.out.println("getDeatilMember 에러: " + ex);			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return mb;
+	}
+	
+	// 회원정보 삭제
+	public int deleteMember(String member_id) {
+		String sql = "DELETE FROM members WHERE member_id=?";
+		int deleteCount = 0;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			deleteCount = pstmt.executeUpdate();
+		} catch(Exception ex) {
+			System.out.println("deleteMember 에러: " + ex);	
+		} finally {
+			close(pstmt);
+		}
+		
+		return deleteCount;
+	}
 }

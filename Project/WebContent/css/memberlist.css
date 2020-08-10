@@ -68,3 +68,7 @@ tr > td > a {
 	text-decoration: none;
 	list-style: none;
 }
+
+tr > td > a:hover {
+	color: black;
+}

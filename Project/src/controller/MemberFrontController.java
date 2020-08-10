@@ -17,12 +17,15 @@ import action.BoardModifyFormAction;
 import action.BoardSearchAction;
 import action.BoardViewAction;
 import action.BoardWriteAction;
+import action.MemberDeleteAction;
 //import action772.MemberDeleteAction;
 import action.MemberJoinAction;
+import action.MemberListAction;
 //import action772.MemberListAction;
 import action.MemberLoginAction;
 import action.MemberLogoutAction;
 import action.MemberOverLapAction;
+import action.MemberViewAction;
 //import action772.MemberViewAction;
 import vo.ActionForward;
 
@@ -132,6 +135,27 @@ public class MemberFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/boardDelete.do")) {	// 게시판 글 삭제하기 Action
 			action = new BoardDeleteAction();
+			try { 
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/memberListAction.do")) {	// 회원목록 보기 Action
+			action = new MemberListAction();
+			try { 
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/memberViewAction.do")) {	// 회원목록 상세보기 Action
+			action = new MemberViewAction();
+			try { 
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/memberDeleteAction.do")) {	// 회원목록 삭제 Action
+			action = new MemberDeleteAction();
 			try { 
 				forward = action.execute(request, response);
 			} catch (Exception e) {

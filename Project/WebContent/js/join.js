@@ -33,11 +33,12 @@ var check_phone = false;
 /*이벤트 핸들러 연결*/
 
 // -------- 아이디 양식 확인 -----------
-id.addEventListener("keyup", checkId);
-id.addEventListener("focus", checkId);
+//id.addEventListener("keyup", checkId);
+//id.addEventListener("focus", checkId);
 id.addEventListener("change", checkId);
 // -------- 아이디 중복 확인 -----------
-id.addEventListener("blur", overlap);
+//id.addEventListener("blur", overlap);
+id.addEventListener("blur", checkId);
 // -------- 비번 양식 확인 -----------
 pw1.addEventListener("keyup", checkPw);
 pw1.addEventListener("keydown", checkPw);
@@ -92,6 +93,7 @@ function checkId() {
         check_id = false;
     } else {
     	error[0].innerHTML = "";
+    	overlap();
     }
     
     console.log("아이디 : ", check_id);
@@ -99,12 +101,12 @@ function checkId() {
 
 function overlap() {		// 아이디 중복 확인
 	var check = id.value;
-	if(id.value === "") {
-        error[0].innerHTML = "필수 정보입니다.";
-        error[0].style.color = "red";
-        error[0].style.display = "block";
-        check_id = false;
-	} else {
+//	if(id.value === "") {
+//        error[0].innerHTML = "필수 정보입니다.";
+//        error[0].style.color = "red";
+//        error[0].style.display = "block";
+//        check_id = false;
+//	} else {
 		$.ajax({
 			type : "POST",
 		    url : "memberoverlapaction.do",
@@ -123,7 +125,7 @@ function overlap() {		// 아이디 중복 확인
 		    	}
 		    }
 		})
-	}
+//	}
 	console.log("아이디중복 : ", check_id);
 }
 

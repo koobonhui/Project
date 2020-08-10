@@ -52,6 +52,7 @@
 	<div class = "login">
 		<span style = "margin-left: 10px"><%=userId.equals("") ? "" : userId + " 님 반갑습니다."%></span>
 		<%=userId.equals("") ? "<a href = 'memberLogin.do' style='text-decoration: none;'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
+		<%=userId.equals("admin") ? "<a href = 'memberListAction.do'>회원정보 보기</a>" : ""%>
 	</div>
 </header>
 
@@ -93,9 +94,31 @@
 			}
 		%>
 	</div>
+	<div class = "clearfix">
+		<a href="boardlist.do?page=<%=nowPage %>" class="btn btn-primary float-left">목록</a>
+	</div>
+	
+	<form method="post" action="boardSearchAction.do">
+	<div class="form-row center-block justify-content-center">
+		<select id="inputState" class="form-control" style="width: 10%;" name="board_option">
+		  <option selected value="board_title">제목</option>
+		  <option value="board_username">글쓴이</option>
+		</select>
+		
+		<div class="input-group mb-3" style="width: 30%;">
+			<input type="text" class="form-control" 
+			placeholder="검색어를 입력하세요." aria-label="검색어를 입력하세요." 
+			aria-describedby="button-addon2" name="board_search" id = "search">
+			
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="return check();">검색</button>
+			</div>
+		</div>
+	</div>
+	</form>
 	
 	<div class = "container">
-		<ul class="pagination">
+		<ul class="pagination justify-content-center">
 	   		<!-- 탭 안되게 할려면 -1 -->
     		<li class="page-item <%=nowPage == 1 ? "disabled" : ""%>">
        			<a <%=nowPage == 1 ? "tabindex='-1'" : ""%> class="page-link" href="boardSearchAction.do?page=<%=nowPage - 1%>&board_option=<%=board_option%>&board_search=<%=board_search%>">&lt;</a>

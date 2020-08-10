@@ -36,7 +36,7 @@ header > div a {
 	margin-left: 1%;
 	margin-top: 8px;
 	margin-bottom: 0;
-	margin-right: 20%;
+	margin-right: 18%;
 }
 
 #logo > img {
@@ -238,7 +238,8 @@ video::-webkit-media-controls {
 
 #map {
 	position: relative;
-	left: 200px;
+	left: 29%;
+	top: 5%;
 }
 
 /* 버튼 */

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <context>
-	<Resource name = "jdbc/project" auth = "Container" type ="javax.sql.DataSource"
-	username = "root" password="yt1234" driverClassName = "com.mysql.cj.jdbc.Driver"
-	factory = "org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
-	url = "jdbc:mysql://localhost:3306/project?useUnicode=true&amp;serverTimezone=Asia/Seoul"
-	maxActive = "500" maxIdle = "100" />
+<!-- 	<Resource name = "jdbc/project" auth = "Container" type ="javax.sql.DataSource" -->
+<!-- 	username = "root" password="yt1234" driverClassName = "com.mysql.cj.jdbc.Driver" -->
+<!-- 	factory = "org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory" -->
+<!-- 	url = "jdbc:mysql://localhost:3306/project?useUnicode=true&amp;serverTimezone=Asia/Seoul" -->
+<!-- 	maxActive = "500" maxIdle = "100" /> -->
 	
-	<Resource name = "jdbc/koobonhui" auth = "Container" type ="javax.sql.DataSource"
-	username = "koobonhui" password="gjdlwo12!" driverClassName = "com.mysql.cj.jdbc.Driver"
+	<Resource name = "jdbc/project" auth = "Container" type ="javax.sql.DataSource"
+	username = "emb1come" password="emb1come" driverClassName = "com.mysql.cj.jdbc.Driver"
 	factory = "org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
-	url = "jdbc:mysql://localhost:3306/koobonhui?useUnicode=true&amp;serverTimezone=Asia/Seoul"
+	url = "jdbc:mysql://118.131.179.138:3306/embed1_come?useUnicode=true&amp;serverTimezone=Asia/Seoul"
 	maxActive = "500" maxIdle = "100" />
 	
 <!-- 	디비를 추가할 때 마다 리소스 추가해야함 -->	

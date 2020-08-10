@@ -49,6 +49,7 @@
 	<div class = "login">
 		<span style = "margin-left: 10px"><%=userId.equals("") ? "" : userId + " 님 반갑습니다."%></span>
 		<%=userId.equals("") ? "<a href = 'memberLogin.do' style='text-decoration: none;'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
+		<%=userId.equals("admin") ? "<a href = 'memberListAction.do'>회원정보 보기</a>" : ""%>
 	</div>
 </header>
 
@@ -96,7 +97,7 @@
 	</div>
 	
 	<form method="post" action="boardSearchAction.do">
-	<div class="form-row center-block">
+	<div class="form-row center-block justify-content-center">
 		<select id="inputState" class="form-control" style="width: 10%;" name="board_option">
 		  <option selected value="board_title">제목</option>
 		  <option value="board_username">글쓴이</option>
@@ -115,7 +116,7 @@
 	</form>
 	
 	<div class = "container">
-		<ul class="pagination">
+		<ul class="pagination justify-content-center">
 	   		<!-- 탭 안되게 할려면 -1 -->
     		<li class="page-item <%=nowPage == 1 ? "disabled" : ""%>">
        			<a <%=nowPage == 1 ? "tabindex='-1'" : ""%> class="page-link" href="boardlist.do?page=<%=nowPage - 1%>">&lt;</a>
