@@ -59,6 +59,10 @@ li a {
   text-decoration: none;
 }
 
+.login > a {
+	color: white;
+}
+
 #main { position: relative; }
 
 .box {
