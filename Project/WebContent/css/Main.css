@@ -71,7 +71,7 @@ li a {
 /* 로그인 버튼 */
 .login {
 	float: right;
-	margin-right: 100px;
+	margin-right: 35px;
 }
 
 /*풀 동영상 배경*/
@@ -346,25 +346,10 @@ video::-webkit-media-controls {
 * {
   box-sizing: border-box;
 }
+
 *::before, *::after {
   box-sizing: border-box;
 }
-
-/* body { */
-/*   background: black; */
-/*   font-family: 'Rubik', sans-serif; */
-/*   font-size: 1rem; */
-/*   line-height: 1.5; */
-/*   display: -webkit-box; */
-/*   display: flex; */
-/*   -webkit-box-align: center; */
-/*           align-items: center; */
-/*   -webkit-box-pack: center; */
-/*           justify-content: center; */
-/*   margin: 0; */
-/*   min-height: 100vh; */
-/*   background: #fff; */
-/* } */
 
 button {
   position: relative;
@@ -381,7 +366,7 @@ button.learn-more {
   font-weight: 600;
   color: #382b22;
   text-transform: uppercase;
-  padding: 1.25em 2em;
+  padding: 1.25em 1em;
   background: #fff0f0;
   border: 2px solid #b18597;
   border-radius: 0.75em;
