@@ -25,7 +25,7 @@
                 <label for="id">아이디</label>
             </h3>
             <span class="box int_id">
-                <input type="text" id="id" class="int" maxlength="20" name = "member_id">
+                <input type="text" id="id" class="int" maxlength="20" name = "member_id" autofocus="autofocus">
                 <span class="step_url">@dog.com</span>
             </span>
             <span class="error_next_box"></span>

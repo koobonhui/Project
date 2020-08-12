@@ -24,6 +24,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- <META HTTP-EQUIV="refresh" CONTENT="3"> 3초마다 새로고침-->
 <meta charset="UTF-8">
 <title>보러올래? : 게시판</title>
 <!-- Bootstrap CSS -->
@@ -89,7 +90,7 @@
 					<%
 						if(userId.equals("admin")) {
 					%>	
-						<td><a href="boardDelete.do?board_num=<%=boardList.get(i).getBoard_num() %>&page=<%=nowPage %>" class="btn btn-danger" onclick = "return confirm('정말 삭제하시겠습니까?')">삭제</a></td>
+						<td><a href="boardDelete.do?board_num=<%=boardList.get(i).getBoard_num() %>&page=<%=nowPage %>" class="btn btn-danger" onclick = "return confirm('삭제하시겠습니까?')">삭제</a></td>
 					<%
 						}
 					%>

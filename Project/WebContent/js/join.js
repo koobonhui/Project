@@ -271,7 +271,6 @@ function check_join() {
 		alert("회원가입 양식을 확인해주세요.");
 		return false;
 	} else {
-		alert("회원가입에 성공했습니다, 환영합니다.");
 		return true;
 	}
 }
