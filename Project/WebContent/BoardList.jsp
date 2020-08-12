@@ -49,8 +49,7 @@
 	<div class = "login">
 		<span style = "margin-left: 10px"><%=userId.equals("") ? "" : userId + " 님 반갑습니다."%></span>
 		<%=userId.equals("") ? "<a href = 'memberLogin.do' style='text-decoration: none;'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%>
-		<span> / </span>
-		<%=userId.equals("admin") ? "<a href = 'memberListAction.do'>회원정보 보기</a>" : ""%>
+		<%=userId.equals("admin") ? "<span> / </span> <a href = 'memberListAction.do'>회원정보 보기</a>" : ""%>
 	</div>
 </header>
 
@@ -67,6 +66,13 @@
 					<th style = "width: 15%">작성자</th>
 					<th style = "width: 10%">작성일</th>
 					<th style = "width: 7%">조회수</th>
+					<%
+						if(userId.equals("admin")) {
+					%>	
+					<th>삭제</th>
+					<%
+						}
+					%>
 				</tr>
 			</thead>
 			
@@ -80,6 +86,13 @@
 					<td><%=boardList.get(i).getBoard_username() %></td>
 					<td><%=boardList.get(i).getBoard_date() %></td>
 					<td><%=boardList.get(i).getBoard_readcount() %></td>
+					<%
+						if(userId.equals("admin")) {
+					%>	
+						<td><a href="boardDelete.do?board_num=<%=boardList.get(i).getBoard_num() %>&page=<%=nowPage %>" class="btn btn-danger" onclick = "return confirm('정말 삭제하시겠습니까?')">삭제</a></td>
+					<%
+						}
+					%>
 				</tr>
 				<%
 					}

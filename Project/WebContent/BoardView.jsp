@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>보러올래? : 게시판</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
 <link rel = "stylesheet" href = "css/boardlist.css">
 <script src = "js/jquery-3.5.1.min.js"></script>
@@ -57,11 +57,38 @@
 				</tr>
 				<tr>
 					<td class = "align-middle">내용</td>
-					<td style="height: 350px; overflow: auto;" class = "text-left"><%=boardview != null ? boardview.getBoard_content() : "" %></td>
+					<td style="height: 350px; overflow: auto;" class = "text-left"><pre><%=boardview != null ? boardview.getBoard_content() : "" %></pre></td>
 				</tr>
 			</tbody>
 		</table>
+		<table class="table table-striped text-center table-bordered">
+			<tbody>
+				<tr>
+					<td>제목</td>
+					<td>내용</td>
+					<td>시간</td>
+					<td>삭제</td>
+				</tr>
+			</tbody>
+		</table>
+		<form action="">
+			<div class="form-row center-block justify-content-center">
+				<table class="table table-striped text-center table-bordered" style = "width: 1020px;">			
+					<tbody>
+						<tr>
+							<td>
+								<textarea class="form-control" placeholder="글 내용" name="board_content"
+								maxlength="65535" style="height: 200px; resize: none;" wrap = "hard"></textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<a href="-" class="btn btn-primary float-right" style = "height: 225px;">댓글 등록</a>
+			</div>
+		</form>
+		
 		<a href="boardlist.do?page=<%=nowPage %>" class="btn btn-primary float-left">목록</a>
+		
 		<%
 			String writer = boardview.getBoard_username();
 			if(writer.equals(userId)) {

@@ -62,7 +62,7 @@
 				<tr>
 					<td>
 						<textarea class="form-control" placeholder="글 내용" name="board_content"
-						maxlength="65535" style="height: 350px; resize: none;"></textarea>
+						maxlength="65535" style="height: 350px; resize: none;" wrap = "hard"></textarea>
 					</td>
 				</tr>
 			</tbody>

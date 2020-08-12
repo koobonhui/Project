@@ -39,8 +39,7 @@
 <%-- 		<%=userId.equals("") ? "<a href = 'memberLogin.do'>로그인</a>" : "<a href = 'memberLogoutAction.do'>로그아웃</a>"%> --%>
 		<span style = "margin-left: 10px"><%=userId.equals("") ? "" : userId + " 님 반갑습니다."%></span>
 		<%=userId.equals("") ? "<button class='learn-more' onclick='link();'>Login</button>" : "<a href = 'memberLogoutAction.do' style = 'margin-left: 10px'>로그아웃</a>"%>
-		<span> / </span>
-		<%=userId.equals("admin") ? "<a href = 'memberListAction.do'>회원정보 보기</a>" : ""%>
+		<%=userId.equals("admin") ? "<span> / </span> <a href = 'memberListAction.do'>회원정보 보기</a>" : ""%>
 	</div>
 </header>
 <!-- ===================== section 1page =========================== -->
@@ -105,13 +104,6 @@
 	</div>
 <!-- ===================== section 3page =========================== -->
 	<div class = "section">
-		<div id = "map_introduce">
-			<h2>찾아 오시는 길</h2>
-		</div>
-		
-<!-- 		<div id = "map"> -->
-<!-- 			<div id="daumRoughmapContainer1593044858680" class="root_daum_roughmap root_daum_roughmap_landing"></div> -->
-<!-- 		</div> -->
 		<div id = "map">
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.6604808673546!2d126.97262231608447!3d37.586611830734384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2b7ef94a16b%3A0xb16d5f135eaaddc!2z7LKt7JmA64yA!5e0!3m2!1sko!2skr!4v1588826305729!5m2!1sko!2skr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 		</div>
@@ -132,16 +124,6 @@
 new fullpage('#full-page', { 
 	sectionsColor: ['', 'rgba(153, 153, 255, 0.7)', 'rgba(153, 153, 255, 0.7)', '#333']
 });
-</script>
-<!-- 카카오 맵 -->
-<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-<script charset="UTF-8">
-	new daum.roughmap.Lander({
-		"timestamp" : "1593044858680",
-		"key" : "yx5z",
-		"mapWidth" : "600",
-		"mapHeight" : "400"
-	}).render();
 </script>
 </body>
 </html>
