@@ -45,10 +45,10 @@
 <!-- ===================== section 1page =========================== -->
 <div id = "full-page">
 	<div class = "section">		
-		<video id="myVideo" loop muted data-autoplay>
-			<source src="video/MainIntro.mp4" type="video/mp4">
-			<source src="video/MainIntro.webm" type="video/webm">
-		</video>
+<!-- 		<video id="myVideo" loop muted data-autoplay> -->
+<!-- 			<source src="video/MainIntro.mp4" type="video/mp4"> -->
+<!-- 			<source src="video/MainIntro.webm" type="video/webm"> -->
+<!-- 		</video> -->
 		
 		<div id="play">
   			<div id="me"></div>
@@ -122,7 +122,7 @@
 <!-- 바닐라 스크립트 자리 -->
 <script>
 new fullpage('#full-page', { 
-	sectionsColor: ['', 'rgba(153, 153, 255, 0.7)', 'rgba(153, 153, 255, 0.7)', '#333']
+	sectionsColor: ['rgba(153, 153, 255, 0.7)', 'rgba(153, 153, 255, 0.7)', 'rgba(153, 153, 255, 0.7)', '#333']
 });
 </script>
 </body>

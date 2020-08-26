@@ -17,7 +17,9 @@ import action.BoardModifyFormAction;
 import action.BoardSearchAction;
 import action.BoardViewAction;
 import action.BoardWriteAction;
+import action.EmailSend;
 import action.MemberDeleteAction;
+import action.MemberEmail;
 //import action772.MemberDeleteAction;
 import action.MemberJoinAction;
 import action.MemberListAction;
@@ -163,6 +165,20 @@ public class MemberFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/boardSearchAction.do")) {	// 게시판 글 검색 Action
 			action = new BoardSearchAction();
+			try { 
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		} else if(command.equals("/mail.do")) {	// mail Action
+			action = new MemberEmail();
+			try { 
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/emailsend.do")) {	// mailsend Action
+			action = new EmailSend();
 			try { 
 				forward = action.execute(request, response);
 			} catch (Exception e) {

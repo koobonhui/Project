@@ -177,4 +177,32 @@ public class MemberDAO {
 		
 		return deleteCount;
 	}
+	
+	public MemberBean email(String member_id) {
+		String sql = "SELECT * FROM members WHERE member_id=?";
+		MemberBean mb = null;
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				mb = new MemberBean();
+				mb.setMember_id(rs.getString("member_id"));
+				mb.setMember_pw(rs.getString("member_pw"));
+				mb.setMember_name(rs.getString("member_name"));
+				mb.setMember_birth(rs.getString("member_birth"));
+				mb.setMember_gender(rs.getString("member_gender"));
+				mb.setMember_phone(rs.getString("member_phone"));
+			}
+		} catch(Exception ex) {
+			System.out.println("getDeatilMember 에러: " + ex);			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return mb;
+	}
 }

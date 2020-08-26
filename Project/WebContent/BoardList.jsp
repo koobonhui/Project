@@ -153,4 +153,10 @@
 </div>
 </body>
 <script src = "js/boardlist.js"></script>
+	<script>	
+		if(self.name != 'reload') {
+			self.name = 'reload';
+			self.location.reload(true);
+		} else self.name = '';
+	</script>
 </html>
